@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>USMAN YAKIN TRIO SINADA</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f4f8;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    header {
+      background-color: #3b82f6;
+      color: white;
+      padding: 20px;
+    }
+
+    .container {
+      width: 80%;
+      margin: 30px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    p {
+      color: #555;
+    }
+
+    button {
+      margin: 15px 0;
+      padding: 10px 20px;
+      border: none;
+      background-color: #3b82f6;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #2563eb;
+    }
+
+    img {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 6px;
+      margin-top: 15px;
+    }
+
+    /* Popup */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+    }
+
+    .popup-content {
+      background: white;
+      width: 80%;
+      height: 80%;
+      margin: 5% auto;
+      padding: 15px;
+      border-radius: 8px;
+      position: relative;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 20px;
+      cursor: pointer;
+      color: red;
+    }
+
+    iframe {
+      width: 100%;
+      height: 90%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>USMAN YAKIN TRIO SINADA</h1>
+</header>
+
+<div class="container">
+  <h2>Program Dart Menampilkan Gambar</h2>
+  <p>
+    Program di bawah ini dibuat menggunakan Dart untuk menampilkan
+    output berupa gambar sederhana. Tombol di bawah dapat digunakan
+    untuk melihat source code lengkap melalui DartPad.
+  </p>
+
+  <button onclick="openPopup()">Lihat Source Code</button>
+
+  <!-- Ganti dengan screenshot hasil output program kamu -->
+  <img src="hasil-output.png" alt="Capture Output Program">
+
+</div>
+
+<!-- Popup -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup()">&times;</span>
+    <iframe src="https://dartpad.dev/embed-dart.html?id=a737c4ed43ce78dcd3f8a7860971e75e"></iframe>
+  </div>
+</div>
+
+<script>
+  function openPopup() {
+    document.getElementById("popup").style.display = "block";
+  }
+
+  function closePopup() {
+    document.getElementById("popup").style.display = "none";
+  }
+</script>
+
+</body>
+</html>
