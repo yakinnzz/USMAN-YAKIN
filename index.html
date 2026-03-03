@@ -1,138 +1,195 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <title>USMAN YAKIN TRIO SINADA</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f2f4f8;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-    }
+<meta charset="UTF-8">
+<title>Laporan OOP Dart - USMAN YAKIN TRIO SINADA</title>
 
-    header {
-      background-color: #3b82f6;
-      color: white;
-      padding: 20px;
-    }
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+    background-color: #f2f2f2;
+    color: #333;
+}
 
-    .container {
-      width: 80%;
-      margin: 30px auto;
-      background: white;
-      padding: 25px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
+.header-box {
+    text-align: center;
+    margin-bottom: 40px;
+}
 
-    h2 {
-      margin-bottom: 10px;
-      color: #333;
-    }
+h1 {
+    color: #1f4e79;
+    margin-bottom: 5px;
+}
 
-    p {
-      color: #555;
-    }
+h3 {
+    margin: 3px 0;
+    font-weight: normal;
+}
 
-    button {
-      margin: 15px 0;
-      padding: 10px 20px;
-      border: none;
-      background-color: #3b82f6;
-      color: white;
-      cursor: pointer;
-      border-radius: 5px;
-    }
+h2 {
+    color: #1f4e79;
+}
 
-    button:hover {
-      background-color: #2563eb;
-    }
+.section {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
 
-    img {
-      width: 100%;
-      max-width: 600px;
-      border-radius: 6px;
-      margin-top: 15px;
-    }
+pre {
+    background-color: #eeeeee;
+    padding: 15px;
+    border-radius: 6px;
+    overflow-x: auto;
+}
 
-    /* Popup */
-    .popup {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
-    }
+iframe {
+    margin-top: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+</style>
 
-    .popup-content {
-      background: white;
-      width: 80%;
-      height: 80%;
-      margin: 5% auto;
-      padding: 15px;
-      border-radius: 8px;
-      position: relative;
-    }
-
-    .close {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 20px;
-      cursor: pointer;
-      color: red;
-    }
-
-    iframe {
-      width: 100%;
-      height: 90%;
-      border: none;
-    }
-  </style>
 </head>
 <body>
 
-<header>
-  <h1>USMAN YAKIN TRIO SINADA</h1>
-</header>
-
-<div class="container">
-  <h2>Program Dart Menampilkan Gambar</h2>
-  <p>
-    Program di bawah ini dibuat menggunakan Dart untuk menampilkan
-    output berupa gambar sederhana. Tombol di bawah dapat digunakan
-    untuk melihat source code lengkap melalui DartPad.
-  </p>
-
-  <button onclick="openPopup()">Lihat Source Code</button>
-
-  <!-- Ganti dengan screenshot hasil output program kamu -->
-  <img src="hasil-output.png" alt="Capture Output Program">
-
+<div class="header-box">
+<h1>USMAN YAKIN TRIO SINADA</h1>
+<h3>NIM : 251410006</h3>
+<h3>Kelas : SI2A</h3>
+<h2>LAPORAN OBJECT ORIENTED PROGRAMMING (OOP) - DART</h2>
 </div>
 
-<!-- Popup -->
-<div class="popup" id="popup">
-  <div class="popup-content">
-    <span class="close" onclick="closePopup()">&times;</span>
-    <iframe src="https://dartpad.dev/embed-dart.html?id=a737c4ed43ce78dcd3f8a7860971e75e"></iframe>
-  </div>
+<div class="section">
+<h2>1. Pengertian OOP</h2>
+<p>
+Object Oriented Programming (OOP) adalah paradigma pemrograman berbasis objek.
+Objek dibuat dari class yang memiliki atribut dan method.
+</p>
 </div>
 
-<script>
-  function openPopup() {
-    document.getElementById("popup").style.display = "block";
+<div class="section">
+<h2>2. Class dan Object</h2>
+<pre><code>
+class Car {
+  String? model;
+  String? color;
+
+  void start() {
+    print('Car started!');
   }
 
-  function closePopup() {
-    document.getElementById("popup").style.display = "none";
+  void stop() {
+    print('Car stopped!');
   }
-</script>
+}
+</code></pre>
+
+<iframe src="https://dartpad.dev/8f3627510d64b42cab35e6cd91949b40?run=true"
+width="100%" height="500"></iframe>
+</div>
+
+<div class="section">
+<h2>3. Constructor</h2>
+<pre><code>
+class Car {
+  String? model;
+  String? color;
+
+  Car(this.model, this.color);
+
+  void start() {
+    print('Car started!');
+  }
+}
+</code></pre>
+
+<iframe src="https://dartpad.dev/ab55d3390bcc10e7da6e19bb7dd6b37c?run=true"
+width="100%" height="500"></iframe>
+</div>
+
+<div class="section">
+<h2>4. Validasi Data</h2>
+<pre><code>
+class Mahasiswa {
+  String nama;
+  String nim;
+  double ipk;
+
+  Mahasiswa(this.nama, this.nim, this.ipk) {
+    if (ipk < 0.0 || ipk > 4.0) {
+      throw ArgumentError('IPK harus 0.0 - 4.0');
+    }
+  }
+}
+</code></pre>
+
+<iframe src="https://dartpad.dev/3947e3d1fdf39788ba11363312a67a93?run=true"
+width="100%" height="500"></iframe>
+</div>
+
+<div class="section">
+<h2>5. Encapsulation</h2>
+<pre><code>
+class Person {
+  String _name;
+  int age;
+
+  Person(this._name, this.age);
+
+  void setName(String name) {
+    _name = name;
+  }
+
+  String getName() {
+    return _name;
+  }
+}
+</code></pre>
+
+<iframe src="https://dartpad.dev/7bc3487bd4fceb57464bf1f25d092a8e?run=true"
+width="100%" height="500"></iframe>
+</div>
+
+<div class="section">
+<h2>6. Named Parameter Constructor</h2>
+<pre><code>
+class Produk {
+  final String id;
+  final String nama;
+  final double harga;
+  final int stok;
+  final String kategori;
+
+  Produk({
+    required this.id,
+    required this.nama,
+    required this.harga,
+    this.stok = 0,
+    this.kategori = 'Umum',
+  });
+}
+</code></pre>
+
+<iframe src="https://dartpad.dev/c59169f43ea6300d62fa22c8a79cee07?run=true"
+width="100%" height="500"></iframe>
+</div>
+
+<div class="section">
+<h2>7. Tambahan Program</h2>
+
+<iframe src="https://dartpad.dev/b46d62a6f572c3e8b0da7fbe46d7c12d?run=true"
+width="100%" height="500"></iframe>
+
+<br><br>
+
+<iframe src="https://dartpad.dev/9994d491f57e635dfcd631521283771f?run=true"
+width="100%" height="500"></iframe>
+
+</div>
 
 </body>
 </html>
-
-
