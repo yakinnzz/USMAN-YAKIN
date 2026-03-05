@@ -9,16 +9,18 @@
 
 <style>
 
-/* BODY */
-
 body{
 margin:0;
 font-family:'Orbitron',sans-serif;
 background:#000;
 color:#00ff9f;
+
+/* grid cyber background */
+
 background-image:
 linear-gradient(rgba(0,255,150,0.08) 1px, transparent 1px),
 linear-gradient(90deg, rgba(0,255,150,0.08) 1px, transparent 1px);
+
 background-size:40px 40px;
 }
 
@@ -29,13 +31,13 @@ text-align:center;
 padding:40px;
 background:#010a05;
 border-bottom:3px solid #00ff9f;
-box-shadow:0 0 20px #00ff9f;
+box-shadow:0 0 25px #00ff9f;
 }
 
 header h1{
 font-size:26px;
 color:#00ff9f;
-text-shadow:0 0 10px #00ff9f,0 0 25px #00ff9f;
+text-shadow:0 0 10px #00ff9f,0 0 30px #00ff9f;
 }
 
 header p{
@@ -58,7 +60,7 @@ padding:30px;
 margin-bottom:40px;
 border:1px solid #00ff9f;
 border-radius:10px;
-box-shadow:0 0 15px #00ff9f inset,0 0 15px #00ff9f;
+box-shadow:0 0 15px #00ff9f inset,0 0 20px #00ff9f;
 transition:0.3s;
 }
 
@@ -77,10 +79,10 @@ text-shadow:0 0 10px #00ff9f;
 
 p,li{
 line-height:1.7;
-color:#a8ffe2;
+color:#b8ffe7;
 }
 
-/* CODE TERMINAL STYLE */
+/* CODE */
 
 pre{
 background:#000;
@@ -90,7 +92,6 @@ border-radius:10px;
 border:1px solid #00ff9f;
 box-shadow:0 0 10px #00ff9f inset;
 overflow-x:auto;
-font-family:monospace;
 }
 
 /* IFRAME */
@@ -111,7 +112,7 @@ background:#000;
 padding:20px;
 border-radius:10px;
 border:1px solid #00ff9f;
-box-shadow:0 0 15px #00ff9f;
+box-shadow:0 0 20px #00ff9f;
 margin-bottom:40px;
 }
 
@@ -124,8 +125,6 @@ border:1px solid #00ff9f;
 color:#00ff9f;
 font-family:'Orbitron';
 }
-
-/* BUTTON */
 
 button{
 background:#00ff9f;
@@ -155,3 +154,221 @@ color:#7affc7;
 </head>
 
 <body>
+
+<header>
+<h1>OOP DART - OBJECT ORIENTED PROGRAMMING</h1>
+<p>USMAN YAKIN TRIO SINADA | NIM: 251410006</p>
+</header>
+
+<div class="container">
+
+<div class="comment-box">
+
+
+<h2>1. PENGERTIAN OOP</h2>
+
+<p>
+Object Oriented Programming (OOP) adalah paradigma pemrograman yang menggunakan objek sebagai dasar perancangan program.
+Pendekatan ini memungkinkan kode menjadi lebih terstruktur, modular, dan mudah dikembangkan.
+</p>
+
+</div>
+<h2>2. Class Dan Object</h2>
+
+<div class="card">
+<b>Class</b> merupakan blueprint atau cetak biru yang digunakan untuk membuat objek. 
+Class berisi atribut (variabel) yang menggambarkan karakteristik suatu objek serta 
+method (fungsi) yang menggambarkan perilaku objek tersebut. Dengan kata lain, class 
+menjadi kerangka dasar yang menentukan bagaimana suatu objek akan dibuat dan bekerja.
+Sedangkan <b>object</b> merupakan instansi dari sebuah class. Object adalah representasi 
+nyata dari class yang telah dibuat dan dapat memiliki nilai atribut yang berbeda-beda. 
+Jika class diibaratkan sebagai cetakan, maka object adalah hasil dari cetakan tersebut.
+</p>
+<pre><code>
+class Car {
+  String? model;
+  String? color;
+
+  void start() {
+    print('Car started!');
+  }
+
+  void stop() {
+    print('Car stopped!');
+  }
+}
+</code></pre>
+
+<iframe src="https://dartpad.dev/01e4151ce06fb25f27ca57d7c7c86a48"></iframe>
+
+</div>
+
+<div class="card">
+
+<h2>3. CONSTRUCTOR</h2>
+<p>
+<b>Constructor</b> adalah sebuah method khusus yang terdapat di dalam class 
+yang digunakan untuk melakukan inisialisasi nilai awal pada sebuah objek 
+ketika objek tersebut dibuat. Constructor biasanya memiliki nama yang sama 
+dengan nama class dan akan otomatis dipanggil saat proses pembuatan objek berlangsung.
+</p>
+<pre><code>
+class Car {
+  String? model;
+  String? color;
+
+  Car(this.model, this.color);
+
+  void start() {
+    print('Car started!');
+  }
+}
+</code></pre>
+
+<iframe src="https://dartpad.dev/3f193fd7486b8dc7a2c4c54b9838cc46"></iframe>
+
+</div>
+
+<div class="card">
+
+<h2>4. VALIDASI DATA</h2>
+<p>
+<b>Constructor</b> adalah sebuah method khusus yang terdapat di dalam class 
+yang digunakan untuk melakukan inisialisasi nilai awal pada sebuah objek 
+ketika objek tersebut dibuat. Constructor biasanya memiliki nama yang sama 
+dengan nama class dan akan otomatis dipanggil saat proses pembuatan objek berlangsung.
+</p>
+<pre><code>
+class Mahasiswa {
+  String nama;
+  String nim;
+  double ipk;
+
+  Mahasiswa(this.nama, this.nim, this.ipk) {
+    if (ipk < 0.0 || ipk > 4.0) {
+      throw ArgumentError('IPK harus 0.0 - 4.0');
+    }
+  }
+}
+</code></pre>
+
+<iframe src="https://dartpad.dev/412250cf409edf27ef815bf5fc8561e8"></iframe>
+
+</div>
+
+<div class="card">
+
+<h2>5. ENCAPSULATION</h2>
+<p>
+<b>Encapsulation</b> merupakan salah satu konsep utama dalam 
+<b>Object Oriented Programming (OOP)</b> yang berfungsi untuk 
+membungkus data dan method dalam sebuah class serta membatasi 
+akses langsung terhadap data tersebut dari luar class.
+</p>
+<pre><code>
+class Person {
+  String _name;
+  int age;
+
+  Person(this._name, this.age);
+
+  void setName(String name) {
+    _name = name;
+  }
+
+  String getName() {
+    return _name;
+  }
+}
+</code></pre>
+
+<iframe src="https://dartpad.dev/7485567e04225ae90334f2de05704956"></iframe>
+
+</div>
+
+<div class="card">
+
+<h2>6. NAMED PARAMETER</h2>
+<p>
+<b>Named parameter</b> merupakan salah satu fitur dalam bahasa pemrograman 
+Dart yang memungkinkan parameter dalam sebuah constructor atau fungsi 
+dipanggil berdasarkan nama parameternya. Dengan menggunakan named parameter, 
+kode program menjadi lebih jelas, mudah dibaca, dan lebih fleksibel 
+dalam penggunaannya.
+</p>
+<pre><code>
+class Produk {
+  final String id;
+  final String nama;
+  final double harga;
+  final int stok;
+  final String kategori;
+
+  Produk({
+    required this.id,
+    required this.nama,
+    required this.harga,
+    this.stok = 0,
+    this.kategori = 'Umum',
+  });
+}
+</code></pre>
+
+<iframe src="https://dartpad.dev/040a443efe898a4f595f6c4cc9dda6d2"></iframe>
+
+</div>
+
+<div class="card">
+
+<h2>7. KESIMPULAN</h2>
+<p>
+Beberapa konsep penting dalam OOP yang telah dipelajari antara lain 
+<b>class dan object</b> yang berfungsi sebagai dasar pembentukan program, 
+<b>constructor</b> yang digunakan untuk memberikan nilai awal pada objek, 
+<b>validasi data</b> yang membantu memastikan bahwa data yang dimasukkan 
+sesuai dengan aturan yang ditentukan, serta <b>encapsulation</b> yang 
+berfungsi untuk melindungi data agar tidak dapat diakses secara langsung 
+dari luar class. Selain itu, penggunaan <b>named parameter</b> dalam Dart 
+juga memberikan fleksibilitas dan kemudahan dalam proses pembuatan objek.
+</p>
+<p>
+OOP membuat program lebih terstruktur, mudah dipelihara, dan dapat dikembangkan menjadi sistem yang lebih kompleks.
+</p>
+
+</div>
+
+</div>
+
+<footer>
+© 2026 - UNIVERSITAS BINADARMA
+</footer>
+
+<script>
+
+function addComment(event){
+
+event.preventDefault()
+
+const name=document.getElementById("name").value
+const comment=document.getElementById("comment").value
+
+const box=document.createElement("div")
+
+box.style.marginTop="15px"
+box.style.borderTop="1px solid #00ffff"
+box.style.paddingTop="10px"
+
+box.innerHTML="<strong>"+name+"</strong><br>"+comment
+
+document.getElementById("comment-list").appendChild(box)
+
+document.getElementById("name").value=""
+document.getElementById("comment").value=""
+
+}
+
+</script>
+
+</body>
+</html>
+```
