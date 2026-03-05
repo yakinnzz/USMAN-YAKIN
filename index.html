@@ -1,88 +1,89 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Laporan OOP Dart - USMAN YAKIN TRIO SINADA</title>
+<title>Laporan OOP Dart - Pixel Style</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --primary: #2563eb;
-  --dark: #1e293b;
-  --light: #f8fafc;
-  --card: #ffffff;
-}
-
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #e0f2fe, #f8fafc);
-  color: var(--dark);
+  background-color: #0f0f0f;
+  font-family: 'Press Start 2P', cursive;
+  color: #00ffcc;
 }
 
 header {
-  background: var(--primary);
-  color: white;
-  padding: 30px;
+  background: #ff0080;
+  padding: 25px;
   text-align: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  border-bottom: 6px solid #00ffcc;
 }
 
 header h1 {
-  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
 }
 
 header p {
+  font-size: 10px;
   margin-top: 10px;
-  font-size: 14px;
-  opacity: 0.9;
 }
 
 .container {
-  max-width: 1100px;
+  max-width: 1000px;
   margin: 40px auto;
   padding: 20px;
 }
 
 .card {
-  background: var(--card);
-  padding: 25px;
-  margin-bottom: 30px;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
+  background: #1a1a1a;
+  padding: 20px;
+  margin-bottom: 40px;
+  border: 4px solid #00ffcc;
+  box-shadow: 8px 8px 0px #ff0080;
 }
 
 h2 {
-  color: var(--primary);
-  margin-top: 0;
+  font-size: 12px;
+  color: #ffff00;
+  margin-bottom: 20px;
+}
+
+p, li {
+  font-size: 10px;
+  line-height: 1.8;
+}
+
+ul {
+  padding-left: 20px;
 }
 
 pre {
-  background: #0f172a;
-  color: #22c55e;
-  padding: 20px;
-  border-radius: 10px;
+  background: black;
+  color: #00ff00;
+  padding: 15px;
+  font-size: 9px;
   overflow-x: auto;
+  border: 3px solid #00ffcc;
 }
 
 iframe {
   margin-top: 20px;
-  border-radius: 12px;
-  border: none;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  border: 4px solid #ffff00;
+  width: 100%;
+  height: 500px;
 }
 
 footer {
+  background: #ff0080;
   text-align: center;
   padding: 20px;
-  background: var(--dark);
-  color: white;
-  margin-top: 50px;
+  font-size: 10px;
+  border-top: 6px solid #00ffcc;
 }
 </style>
 </head>
@@ -90,65 +91,60 @@ footer {
 <body>
 
 <header>
-  <h1>LAPORAN OBJECT ORIENTED PROGRAMMING (OOP) - DART</h1>
-  <p>NAMA: USMAN YAKIN TRIO SINADA | NIM: 251410006</p>
+
+<div style="background:#000; padding:20px; margin-bottom:20px; border:4px solid #00ffcc; box-shadow:6px 6px 0px #ffff00;">
+<h2 style="font-size:12px; color:#ffff00;">FORUM KOMENTAR</h2>
+
+<form onsubmit="addComment(event)">
+<input type="text" id="name" placeholder="Nama..." required
+style="width:100%; padding:10px; margin-bottom:10px; font-family:'Press Start 2P'; font-size:8px;">
+
+<textarea id="comment" placeholder="Tulis komentar..." required
+style="width:100%; padding:10px; margin-bottom:10px; font-family:'Press Start 2P'; font-size:8px;"></textarea>
+
+<button type="submit"
+style="background:#ff0080; color:white; padding:10px; border:none; cursor:pointer; font-family:'Press Start 2P'; font-size:8px;">
+KIRIM
+</button>
+</form>
+
+<div id="comment-list" style="margin-top:20px;"></div>
+</div>
+
+<script>
+function addComment(event) {
+event.preventDefault();
+const name = document.getElementById("name").value;
+const comment = document.getElementById("comment").value;
+
+const commentBox = document.createElement("div");
+commentBox.style.marginTop = "15px";
+commentBox.style.borderTop = "2px dashed #00ffcc";
+commentBox.style.paddingTop = "10px";
+commentBox.innerHTML = "<strong>" + name + ":</strong><br>" + comment;
+
+document.getElementById("comment-list").appendChild(commentBox);
+
+document.getElementById("name").value = "";
+document.getElementById("comment").value = "";
+}
+</script>
+
+<h1>OOP DART - OBJECT ORIENTED PROGRAMMING</h1>
+<p>USMAN YAKIN TRIO SINADA | NIM: 251410006</p>
+
 </header>
 
 <div class="container">
 
-<!-- 1 -->
 <div class="card">
 <h2>1. PENGERTIAN OOP</h2>
-
-<p>
-Object Oriented Programming (OOP) tidak hanya sekadar teknik pemrograman, 
-tetapi merupakan pendekatan desain sistem yang meniru cara manusia memahami dunia nyata. 
-Dalam kehidupan sehari-hari, kita mengenali entitas sebagai objek yang memiliki 
-karakteristik dan perilaku. OOP mengadopsi konsep ini ke dalam pengembangan 
-perangkat lunak sehingga struktur program menjadi lebih intuitif dan mudah dipahami.
-</p>
-
-<p>
-OOP bertujuan untuk meningkatkan modularitas sistem, yaitu dengan memecah 
-program besar menjadi bagian-bagian kecil yang terorganisir dalam bentuk class. 
-Setiap class bertanggung jawab atas satu konsep atau entitas tertentu, 
-sehingga pengembangan dan pemeliharaan sistem menjadi lebih terstruktur.
-</p>
-
-<p>
-Selain itu, OOP mendukung prinsip <b>reusability</b> atau penggunaan ulang kode. 
-Class yang telah dibuat dapat digunakan kembali dalam proyek lain tanpa perlu 
-menulis ulang logika yang sama. Hal ini sangat penting dalam pengembangan 
-perangkat lunak modern yang menuntut efisiensi waktu dan konsistensi kualitas.
-</p>
-
-<p>
-Dalam praktiknya, OOP memiliki empat pilar utama, yaitu 
-<b>Encapsulation</b>, <b>Abstraction</b>, <b>Inheritance</b>, dan <b>Polymorphism</b>. 
-Keempat prinsip ini memungkinkan sistem menjadi lebih fleksibel, aman, dan 
-mudah dikembangkan. Meskipun pada laporan ini lebih difokuskan pada 
-Encapsulation dan Constructor, Dart sebagai bahasa pemrograman 
-mendukung seluruh pilar tersebut secara native.
-</p>
-
-<p>
-Dengan menerapkan paradigma OOP, pengembang dapat membangun sistem yang 
-<b>scalable</b> (mudah dikembangkan), <b>maintainable</b> (mudah dirawat), 
-dan <b>robust</b> (tahan terhadap kesalahan). Pendekatan ini menjadi fondasi 
-utama dalam pengembangan aplikasi modern, termasuk framework Flutter 
-yang menggunakan Dart sebagai bahasa utamanya.
-</p>
-
+<p>Object Oriented Programming (OOP) adalah paradigma pemrograman yang menggunakan objek sebagai dasar perancangan program...</p>
 </div>
 
-<!-- 2 -->
-  <p>
-Pada source code ini, class <b>Car</b> memiliki dua atribut yaitu model dan color.
-Method <b>start()</b> dan <b>stop()</b> menggambarkan perilaku objek mobil.
-Class ini menunjukkan konsep dasar OOP yaitu pembuatan objek dari sebuah blueprint (class).
-</p>
 <div class="card">
-<h2>2. Class dan Object</h2>
+<h2>2. CLASS DAN OBJECT</h2>
+
 <pre><code>
 class Car {
   String? model;
@@ -164,21 +160,13 @@ class Car {
 }
 </code></pre>
 
-<iframe 
-src="https://dartpad.dev/embed-inline.html?id=8f3627510d64b42cab35e6cd91949b40"
-width="100%" height="500">
-</iframe>
+<iframe src="https://dartpad.dev/042ee63dd7bf02f8f972fea56240d53d"></iframe>
+
 </div>
 
-<!-- 3 -->
-  <p>
-Constructor digunakan untuk memberikan nilai awal saat objek dibuat.
-Dengan <b>Car(this.model, this.color)</b>, setiap objek Car 
-akan langsung memiliki nilai model dan color ketika diinisialisasi.
-Ini meningkatkan efisiensi dan memastikan data tidak kosong.
-</p>
 <div class="card">
-<h2>3. Constructor</h2>
+<h2>3. CONSTRUCTOR</h2>
+
 <pre><code>
 class Car {
   String? model;
@@ -192,20 +180,13 @@ class Car {
 }
 </code></pre>
 
-<iframe 
-src="https://dartpad.dev/embed-inline.html?id=ab55d3390bcc10e7da6e19bb7dd6b37c"
-width="100%" height="500">
-</iframe>
+<iframe src="https://dartpad.dev/50c57ea9ad6c19b39b90530f284e1d97"></iframe>
+
 </div>
 
-<!-- 4 -->
-  <p>
-Class <b>Mahasiswa</b> menerapkan validasi pada constructor.
-Jika nilai IPK berada di luar rentang 0.0–4.0, program akan menghasilkan error.
-Ini merupakan contoh penerapan kontrol data agar sistem lebih aman dan robust.
-</p>
 <div class="card">
-<h2>4. Validasi Data (Mahasiswa)</h2>
+<h2>4. VALIDASI DATA</h2>
+
 <pre><code>
 class Mahasiswa {
   String nama;
@@ -220,21 +201,13 @@ class Mahasiswa {
 }
 </code></pre>
 
-<iframe 
-src="https://dartpad.dev/embed-inline.html?id=3947e3d1fdf39788ba11363312a67a93"
-width="100%" height="500">
-</iframe>
+<iframe src="https://dartpad.dev/f0a114aaf3c18d7b11362b4e31d3915d"></iframe>
+
 </div>
 
-<!-- 5 -->
-  <p>
-Atribut <b>name</b> diawali dengan underscore () yang menandakan 
-bahwa variabel tersebut bersifat private.
-Akses dilakukan melalui method <b>setName()</b> dan <b>getName()</b>.
-Konsep ini disebut Encapsulation, yaitu membatasi akses langsung ke data.
-</p>
 <div class="card">
-<h2>5. Encapsulation</h2>
+<h2>5. ENCAPSULATION</h2>
+
 <pre><code>
 class Person {
   String _name;
@@ -252,21 +225,13 @@ class Person {
 }
 </code></pre>
 
-<iframe 
-src="https://dartpad.dev/embed-inline.html?id=7bc3487bd4fceb57464bf1f25d092a8e"
-width="100%" height="500">
-</iframe>
+<iframe src="https://dartpad.dev/embed-inline.html?id=f0a114aaf3c18d7b11362b4e31d3915d"></iframe>
+
 </div>
 
-<!-- 6 -->
-  <p>
-Constructor dengan named parameter membuat kode lebih jelas dan fleksibel.
-Kata kunci <b>required</b> memastikan nilai wajib diisi,
-sementara nilai default seperti stok = 0 dan kategori = 'Umum'
-memberikan keamanan tambahan jika tidak diinput.
-</p>
 <div class="card">
-<h2>6. Constructor Named Parameter</h2>
+<h2>6. NAMED PARAMETER</h2>
+
 <pre><code>
 class Produk {
   final String id;
@@ -285,26 +250,21 @@ class Produk {
 }
 </code></pre>
 
-<iframe 
-src="https://dartpad.dev/embed-inline.html?id=c59169f43ea6300d62fa22c8a79cee07"
-width="100%" height="500">
-</iframe>
+<iframe src="https://dartpad.dev/embed-inline.html?id=86af11056f3de0400ee1662b30de12fb"></iframe>
+
 </div>
 
-<!-- 7 -->
 <div class="card">
-<h2>7. Kesimpulan</h2>
-<p>
-OOP membuat program lebih terstruktur, mudah dikembangkan, dan aman.
-Konsep ini sangat cocok untuk aplikasi skala menengah hingga besar.
-</p>
+<h2>7. KESIMPULAN</h2>
+<p>OOP membuat program lebih terstruktur dan mudah dikembangkan.</p>
 </div>
 
 </div>
 
 <footer>
-© 2026 USMAN YAKIN TRIO SINADA - Universitas Binadarma
+© 2026 - UNIVERSITAS BINADARMA
 </footer>
 
 </body>
 </html>
+```
