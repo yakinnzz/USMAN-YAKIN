@@ -8,9 +8,9 @@
     <style> 
         body{ 
             margin:0; 
-            font-family:'LegoThick',sans-serif; 
+            font-family:'Orbitron',sans-serif; 
             background:#000; 
-            color:#4169E1; 
+            color:#00ff9f; 
             background-image: linear-gradient(rgba(0,255,150,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,150,0.08) 1px, transparent 1px); 
             background-size:40px 40px; 
         } 
@@ -42,6 +42,7 @@
             border-radius:10px; 
             box-shadow:0 0 15px #00ff9f inset,0 0 20px #00ff9f; 
             transition:0.3s; 
+            position: relative;
         } 
         .card:hover{ 
             box-shadow:0 0 25px #00ff9f,0 0 60px #00ff9f; 
@@ -64,14 +65,7 @@
             border:1px solid #00ff9f; 
             box-shadow:0 0 10px #00ff9f inset; 
             overflow-x:auto; 
-        } 
-        iframe{ 
-            width:100%; 
-            height:500px; 
-            margin-top:20px; 
-            border:1px solid #00ff9f; 
-            border-radius:10px; 
-            box-shadow:0 0 20px #00ff9f; 
+            font-size: 14px;
         } 
         .comment-box{ 
             background:#000; 
@@ -100,9 +94,11 @@
             font-family:'Orbitron'; 
             margin-right:10px; 
             margin-top:10px; 
+            transition: 0.3s;
         } 
         button:hover{ 
             box-shadow:0 0 20px #00ff9f,0 0 40px #00ff9f; 
+            transform: scale(1.05);
         } 
         .btn-group{ 
             display:flex; 
@@ -119,6 +115,133 @@
             background:#00ff9f; 
             color:#000; 
         } 
+        
+        /* MODAL POPUP STYLES */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .modal-content {
+            width: 95%;
+            height: 95%;
+            background: #0a0a0a;
+            border: 3px solid #00ff9f;
+            border-radius: 15px;
+            box-shadow: 0 0 50px #00ff9f, 0 0 100px #00ff9f inset;
+            position: relative;
+            animation: glowPulse 2s infinite;
+        }
+        
+        @keyframes glowPulse {
+            0% { box-shadow: 0 0 30px #00ff9f, 0 0 60px #00ff9f inset; }
+            50% { box-shadow: 0 0 60px #00ff9f, 0 0 100px #00ff9f inset; }
+            100% { box-shadow: 0 0 30px #00ff9f, 0 0 60px #00ff9f inset; }
+        }
+        
+        .modal-header {
+            position: absolute;
+            top: -40px;
+            left: 20px;
+            right: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #00ff9f;
+            font-size: 18px;
+            text-shadow: 0 0 10px #00ff9f;
+        }
+        
+        .modal-title {
+            background: #000;
+            padding: 10px 20px;
+            border: 2px solid #00ff9f;
+            border-radius: 30px;
+            box-shadow: 0 0 20px #00ff9f;
+        }
+        
+        .modal-close {
+            width: 50px;
+            height: 50px;
+            background: #00ff9f;
+            border: 3px solid #000;
+            border-radius: 50%;
+            color: black;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 30px #00ff9f;
+            transition: 0.3s;
+        }
+        
+        .modal-close:hover {
+            transform: scale(1.2) rotate(90deg);
+            box-shadow: 0 0 50px #00ff9f;
+        }
+        
+        .modal-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 12px;
+            background: white;
+        }
+        
+        /* INDICATOR bahwa iframe asli sudah di-hide */
+        .iframe-container {
+            position: relative;
+            margin-top: 20px;
+        }
+        
+        .iframe-container iframe {
+            width: 100%;
+            height: 500px;
+            border: 1px solid #00ff9f;
+            border-radius: 10px;
+            box-shadow: 0 0 20px #00ff9f;
+            opacity: 0.5;
+            filter: grayscale(50%);
+            pointer-events: none;
+        }
+        
+        .iframe-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            border: 2px solid #00ff9f;
+        }
+        
+        .iframe-overlay span {
+            background: #00ff9f;
+            color: black;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 0 30px #00ff9f;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
         footer{ 
             text-align:center; 
             padding:20px; 
@@ -135,6 +258,17 @@
         <p>USMAN YAKIN TRIO SINADA | NIM: 251410006</p> 
     </header> 
     
+    <!-- MODAL POPUP (SATU UNTUK SEMUA) -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title" id="modalTitle">Demo Class & Object</span>
+                <div class="modal-close" onclick="closeModal()">×</div>
+            </div>
+            <iframe class="modal-iframe" id="modalIframe" src="about:blank" allow="fullscreen"></iframe>
+        </div>
+    </div>
+    
     <div class="container"> 
         <div class="comment-box"> 
             <h2>1. PENGERTIAN OOP</h2> 
@@ -147,8 +281,8 @@
             <p><b>Class</b> merupakan blueprint atau cetak biru yang digunakan untuk membuat objek. Class berisi atribut (variabel) yang menggambarkan karakteristik suatu objek serta method (fungsi) yang menggambarkan perilaku objek tersebut. Sedangkan <b>object</b> merupakan instansi dari sebuah class.</p> 
             <pre><code>// Nama   : USMAN YAKIN TRIO SINADA
 // Nim    : 251410006
-// Kelas  : Si2Aclass Car 
-                {
+// Kelas  : Si2A
+class Car {
     String? model;
     String? color;
     
@@ -160,9 +294,14 @@
     }
 }</code></pre>
             <div class="btn-group">
-                <button onclick="openPopup('https://dartpad.dev/01e4151ce06fb25f27ca57d7c7c86a48')" class="popup-btn">🚗 Buka Demo Class & Object di Popup</button>
+                <button onclick="openModal('https://dartpad.dev/01e4151ce06fb25f27ca57d7c7c86a48', 'Demo Class & Object')" class="popup-btn">🚗 Buka Demo Class & Object di Popup</button>
             </div>
-            <iframe src="https://dartpad.dev/01e4151ce06fb25f27ca57d7c7c86a48"></iframe> 
+            <div class="iframe-container">
+                <iframe src="https://dartpad.dev/01e4151ce06fb25f27ca57d7c7c86a48"></iframe>
+                <div class="iframe-overlay">
+                    <span>🔒 KLIK TOMBOL DI ATAS UNTUK MEMBUKA</span>
+                </div>
+            </div>
         </div> 
 
         <!-- CONSTRUCTOR -->
@@ -173,14 +312,12 @@
 // Nim    : 251410006
 // Kelas  : Si2A
 class Mahasiswa {
-  String nama; // nama : USMAN YAKIN TRIO SINADA
-  String nim;  // nim  : 251410006
-  double ipk;  // ipk  : 3.90
+  String nama;
+  String nim;
+  double ipk;
 
-  // Constructor Mahasiswa (Menginisialisasi data input)
   Mahasiswa(this.nama, this.nim, this.ipk);
 
-  // Method untuk menampilkan data mahasiswa ke konsol
   void tampilkanData() {
     print('Nama : $nama');
     print('NIM  : $nim');
@@ -189,17 +326,18 @@ class Mahasiswa {
 }
 
 void main() {
-  // Membuat objek mhs1 dari class Mahasiswa
   Mahasiswa mhs1 = Mahasiswa("USMAN YAKIN TRIO SINADA", "251410006", 3.90);
-
-  mhs1.tampilkanData(); // Memanggil method tampilkanData
-}
-Comment
-</code></pre>
+  mhs1.tampilkanData();
+}</code></pre>
             <div class="btn-group">
-                <button onclick="openPopup('https://dartpad.dev/3f193fd7486b8dc7a2c4c54b9838cc46')" class="popup-btn">🔧 Buka Demo Constructor di Popup</button>
+                <button onclick="openModal('https://dartpad.dev/3f193fd7486b8dc7a2c4c54b9838cc46', 'Demo Constructor')" class="popup-btn">🔧 Buka Demo Constructor di Popup</button>
             </div>
-            <iframe src="https://dartpad.dev/3f193fd7486b8dc7a2c4c54b9838cc46"></iframe> 
+            <div class="iframe-container">
+                <iframe src="https://dartpad.dev/3f193fd7486b8dc7a2c4c54b9838cc46"></iframe>
+                <div class="iframe-overlay">
+                    <span>🔒 KLIK TOMBOL DI ATAS UNTUK MEMBUKA</span>
+                </div>
+            </div>
         </div> 
 
         <!-- VALIDASI DATA -->
@@ -210,14 +348,16 @@ Comment
 // Nim    : 251410006
 // Kelas  : Si2A
 class Mahasiswa {
-  String nama; // nama : USMAN YAKIN TRIO SINADA
-  String nim;  // nim  : 251410006
-  double ipk;  // ipk  : 3.90
+  String nama;
+  String nim;
+  double ipk;
 
-  // Constructor Mahasiswa (Menginisialisasi data input)
-  Mahasiswa(this.nama, this.nim, this.ipk);
+  Mahasiswa(this.nama, this.nim, this.ipk) {
+    if (ipk < 0.0 || ipk > 4.0) {
+      throw ArgumentError('IPK harus 0.0 - 4.0');
+    }
+  }
 
-  // Method untuk menampilkan data mahasiswa ke konsol
   void tampilkanData() {
     print('Nama : $nama');
     print('NIM  : $nim');
@@ -226,17 +366,18 @@ class Mahasiswa {
 }
 
 void main() {
-  // Membuat objek mhs1 dari class Mahasiswa
   Mahasiswa mhs1 = Mahasiswa("USMAN YAKIN TRIO SINADA", "251410006", 3.90);
-
-  mhs1.tampilkanData(); // Memanggil method tampilkanData
-}
-Comment
-</code></pre>
+  mhs1.tampilkanData();
+}</code></pre>
             <div class="btn-group">
-                <button onclick="openPopup('https://dartpad.dev/412250cf409edf27ef815bf5fc8561e8')" class="popup-btn">✅ Buka Demo Validasi di Popup</button>
+                <button onclick="openModal('https://dartpad.dev/412250cf409edf27ef815bf5fc8561e8', 'Demo Validasi Data')" class="popup-btn">✅ Buka Demo Validasi di Popup</button>
             </div>
-            <iframe src="https://dartpad.dev/412250cf409edf27ef815bf5fc8561e8"></iframe> 
+            <div class="iframe-container">
+                <iframe src="https://dartpad.dev/412250cf409edf27ef815bf5fc8561e8"></iframe>
+                <div class="iframe-overlay">
+                    <span>🔒 KLIK TOMBOL DI ATAS UNTUK MEMBUKA</span>
+                </div>
+            </div>
         </div> 
 
         <!-- ENCAPSULATION -->
@@ -247,31 +388,30 @@ Comment
 // Nim    : 251410006
 // Kelas  : Si2A
 class Person {
-  String _name; // Atribut private (diawali underscore)
-  int age;      // Atribut publik
+  String _name;
+  int age;
 
-  // Constructor
   Person(this._name, this.age);
 
-  // Setter untuk mengubah nilai _name secara aman
   void setName(String name) => _name = name;
-
-  // Getter untuk mengambil nilai _name
   String getName() => _name;
 }
 
 void main() {
-  // Membuat objek dari class Person
   Person person = Person("USMAN YAKIN TRIO SINADA", 18);
-
-  print(person.age);        // Menampilkan umur
-  person.setName("USMAN");  // Mengubah nama
-  print(person.getName());  // Menampilkan nama hasil getter
+  print(person.age);
+  person.setName("USMAN");
+  print(person.getName());
 }</code></pre>
             <div class="btn-group">
-                <button onclick="openPopup('https://dartpad.dev/7485567e04225ae90334f2de05704956')" class="popup-btn">🔒 Buka Demo Encapsulation di Popup</button>
+                <button onclick="openModal('https://dartpad.dev/7485567e04225ae90334f2de05704956', 'Demo Encapsulation')" class="popup-btn">🔒 Buka Demo Encapsulation di Popup</button>
             </div>
-            <iframe src="https://dartpad.dev/7485567e04225ae90334f2de05704956"></iframe> 
+            <div class="iframe-container">
+                <iframe src="https://dartpad.dev/7485567e04225ae90334f2de05704956"></iframe>
+                <div class="iframe-overlay">
+                    <span>🔒 KLIK TOMBOL DI ATAS UNTUK MEMBUKA</span>
+                </div>
+            </div>
         </div> 
 
         <!-- NAMED PARAMETER -->
@@ -282,23 +422,24 @@ void main() {
 // Nim    : 251410006
 // Kelas  : Si2A
 class Product {
-  String nama; // Nama produk (contoh: Laptop)
+  String nama;
 
-  // Constructor
   Product(this.nama);
 }
 
 void main() {
-  // Membuat objek produk1 dari class Product
   Product produk1 = Product("Usman Website");
-
-  // Menampilkan atribut nama
   print(produk1.nama);
 }</code></pre>
             <div class="btn-group">
-                <button onclick="openPopup('https://dartpad.dev/040a443efe898a4f595f6c4cc9dda6d2')" class="popup-btn">📦 Buka Demo Named Parameter di Popup</button>
+                <button onclick="openModal('https://dartpad.dev/040a443efe898a4f595f6c4cc9dda6d2', 'Demo Named Parameter')" class="popup-btn">📦 Buka Demo Named Parameter di Popup</button>
             </div>
-            <iframe src="https://dartpad.dev/040a443efe898a4f595f6c4cc9dda6d2"></iframe> 
+            <div class="iframe-container">
+                <iframe src="https://dartpad.dev/040a443efe898a4f595f6c4cc9dda6d2"></iframe>
+                <div class="iframe-overlay">
+                    <span>🔒 KLIK TOMBOL DI ATAS UNTUK MEMBUKA</span>
+                </div>
+            </div>
         </div> 
 
         <!-- KESIMPULAN -->
@@ -313,46 +454,51 @@ void main() {
     </footer> 
 
     <script>
-        // Fungsi untuk membuka iframe di popup
-        function openPopup(url) {
-            // Tentukan ukuran popup
-            const width = 1200;
-            const height = 700;
+        // Fungsi untuk membuka modal popup
+        function openModal(url, title) {
+            const modal = document.getElementById('modalOverlay');
+            const iframe = document.getElementById('modalIframe');
+            const titleElement = document.getElementById('modalTitle');
             
-            // Hitung posisi di tengah layar
-            const left = (window.screen.width / 2) - (width / 2);
-            const top = (window.screen.height / 2) - (height / 2);
+            // Set source iframe dan judul
+            iframe.src = url;
+            titleElement.textContent = title;
             
-            // Buka popup dengan konfigurasi cyber
-            const popup = window.open(
-                url, 
-                'DartPad Demo', 
-                `width=${width},height=${height},left=${left},top=${top},toolbar=no,menubar=no,scrollbars=yes,resizable=yes,status=no`
-            );
+            // Tampilkan modal
+            modal.style.display = 'flex';
             
-            // Optional: tambahkan styling ke popup jika memungkinkan
-            if (popup) {
-                // Fokus ke popup
-                popup.focus();
-            } else {
-                alert('Popup terblokir! Izinkan popup untuk situs ini.');
+            // Prevent scrolling di background
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Fungsi untuk menutup modal
+        function closeModal() {
+            const modal = document.getElementById('modalOverlay');
+            const iframe = document.getElementById('modalIframe');
+            
+            // Sembunyikan modal
+            modal.style.display = 'none';
+            
+            // Kosongkan src iframe untuk stop loading
+            iframe.src = 'about:blank';
+            
+            // Kembalikan scrolling
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Tutup modal jika klik di luar area modal
+        document.getElementById('modalOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
             }
-        }
-
-        // Fungsi comment yang sudah ada
-        function addComment(event){
-            event.preventDefault();
-            const name=document.getElementById("name").value;
-            const comment=document.getElementById("comment").value;
-            const box=document.createElement("div");
-            box.style.marginTop="15px";
-            box.style.borderTop="1px solid #00ffff";
-            box.style.paddingTop="10px";
-            box.innerHTML="<strong>"+name+"</strong><br>"+comment;
-            document.getElementById("comment-list").appendChild(box);
-            document.getElementById("name").value="";
-            document.getElementById("comment").value="";
-        }
+        });
+        
+        // Tutup modal dengan tombol ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
     </script>
 </body> 
 </html>
