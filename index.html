@@ -169,16 +169,33 @@
         <div class="card"> 
             <h2>3. CONSTRUCTOR</h2> 
             <p><b>Constructor</b> adalah method khusus untuk inisialisasi nilai awal pada objek ketika objek dibuat.</p> 
-            <pre><code>class Car {
-    String? model;
-    String? color;
-    
-    Car(this.model, this.color);
-    
-    void start() { 
-        print('Car started!'); 
-    }
-}</code></pre>
+            <pre><code>// Nama   : USMAN YAKIN TRIO SINADA
+// Nim    : 251410006
+// Kelas  : Si2A
+class Mahasiswa {
+  String nama; // nama : USMAN YAKIN TRIO SINADA
+  String nim;  // nim  : 251410006
+  double ipk;  // ipk  : 3.90
+
+  // Constructor Mahasiswa (Menginisialisasi data input)
+  Mahasiswa(this.nama, this.nim, this.ipk);
+
+  // Method untuk menampilkan data mahasiswa ke konsol
+  void tampilkanData() {
+    print('Nama : $nama');
+    print('NIM  : $nim');
+    print('IPK  : $ipk');
+  }
+}
+
+void main() {
+  // Membuat objek mhs1 dari class Mahasiswa
+  Mahasiswa mhs1 = Mahasiswa("USMAN YAKIN TRIO SINADA", "251410006", 3.90);
+
+  mhs1.tampilkanData(); // Memanggil method tampilkanData
+}
+Comment
+</code></pre>
             <div class="btn-group">
                 <button onclick="openPopup('https://dartpad.dev/3f193fd7486b8dc7a2c4c54b9838cc46')" class="popup-btn">🔧 Buka Demo Constructor di Popup</button>
             </div>
