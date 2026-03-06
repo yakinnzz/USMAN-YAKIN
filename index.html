@@ -298,27 +298,27 @@
 // Kelas  : Si2A
 
 class Car {
-  String? model;
-  String? color;
-  
+  String model; // Properti model
+  String color; // Properti warna
+
+  // Constructor untuk inisialisasi model dan color secara langsung
+  Car(this.model, this.color);
+
+  // Method untuk menyalakan mobil
   void start() {
-    print('Mobil dinyalakan');
-  }
-  
-  void stop() {
-    print('Mobil dimatikan');
+    print('Engine Online: $model'); // Menampilkan pesan dengan nama model
   }
 }
 
 void main() {
-  Car myCar = Car();
-  myCar.model = 'Toyota';
-  myCar.color = 'Merah';
-  
-  print('Model: ${myCar.model}');
-  print('Warna: ${myCar.color}');
+  // Membuat objek myCar dari class Car
+  Car myCar = Car("Sirion", "Biru");
+
+  // Menjalankan fungsi start
   myCar.start();
-  myCar.stop();
+
+  // Menampilkan atribut warna
+  print(myCar.color);
 }</code></pre>
             <div class="btn-group">
                 <button onclick="openModal('https://dartpad.dev/01e4151ce06fb25f27ca57d7c7c86a48?theme=dark', 'Demo Class & Object')" class="popup-btn">🚗 Buka Demo Class & Object di Popup</button>
@@ -338,28 +338,25 @@ void main() {
             <pre><code>// Nama   : USMAN YAKIN TRIO SINADA
 // Nim    : 251410006
 // Kelas  : Si2A
+class Car {
+  String model; // Properti model
+  String color; // Properti warna
 
-class Mahasiswa {
-  String nama;
-  String nim;
-  double ipk;
+  // Constructor untuk inisialisasi model dan color secara langsung
+  Car(this.model, this.color);
 
-  // Constructor
-  Mahasiswa(this.nama, this.nim, this.ipk);
-
-  void tampilkanData() {
-    print('Nama : $nama');
-    print('NIM  : $nim');
-    print('IPK  : $ipk');
+  // Method untuk menyalakan mobil
+  void start() {
+    print('Engine Online: $model'); // Menampilkan pesan dengan nama model
   }
 }
 
 void main() {
-  // Membuat objek mhs1 dari class Mahasiswa
-  Mahasiswa mhs1 = Mahasiswa("USMAN YAKIN TRIO SINADA", "251410006", 3.90);
-  
-  print('=== DATA MAHASISWA ===');
-  mhs1.tampilkanData();
+  // Membuat objek myCar dari class Car
+  Car myCar = Car("SUPRAMK4", "BLACK");
+
+  myCar.start();        // Menjalankan fungsi start
+  print(myCar.color);   // Menampilkan atribut warna
 }</code></pre>
             <div class="btn-group">
                 <button onclick="openModal('https://dartpad.dev/3f193fd7486b8dc7a2c4c54b9838cc46?theme=dark', 'Demo Constructor')" class="popup-btn">🔧 Buka Demo Constructor di Popup</button>
@@ -379,22 +376,15 @@ void main() {
             <pre><code>// Nama   : USMAN YAKIN TRIO SINADA
 // Nim    : 251410006
 // Kelas  : Si2A
-
 class Mahasiswa {
-  String nama;
-  String nim;
-  double ipk;
+  String nama; // nama : USMAN YAKIN TRIO SINADA
+  String nim;  // nim  : 251410006
+  double ipk;  // ipk  : 3.90
 
-  // Constructor dengan validasi
-  Mahasiswa(this.nama, this.nim, this.ipk) {
-    if (ipk < 0.0 || ipk > 4.0) {
-      throw ArgumentError('IPK harus antara 0.0 - 4.0');
-    }
-    if (nim.isEmpty) {
-      throw ArgumentError('NIM tidak boleh kosong');
-    }
-  }
+  // Constructor Mahasiswa (Menginisialisasi data input)
+  Mahasiswa(this.nama, this.nim, this.ipk);
 
+  // Method untuk menampilkan data mahasiswa ke konsol
   void tampilkanData() {
     print('Nama : $nama');
     print('NIM  : $nim');
@@ -403,19 +393,10 @@ class Mahasiswa {
 }
 
 void main() {
-  try {
-    // Data valid
-    Mahasiswa mhs1 = Mahasiswa("USMAN YAKIN TRIO SINADA", "251410006", 3.90);
-    print('=== DATA VALID ===');
-    mhs1.tampilkanData();
-    
-    // Data tidak valid (akan error)
-    print('\n=== Mencoba data tidak valid ===');
-    Mahasiswa mhs2 = Mahasiswa("Test", "", 5.0);
-    
-  } catch (e) {
-    print('Error: $e');
-  }
+  // Membuat objek mhs1 dari class Mahasiswa
+  Mahasiswa mhs1 = Mahasiswa("USMAN YAKIN TRIO SINADA", "251410006", 3.90);
+
+  mhs1.tampilkanData(); // Memanggil method tampilkanData
 }</code></pre>
             <div class="btn-group">
                 <button onclick="openModal('https://dartpad.dev/412250cf409edf27ef815bf5fc8561e8?theme=dark', 'Demo Validasi Data')" class="popup-btn">✅ Buka Demo Validasi di Popup</button>
@@ -435,48 +416,27 @@ void main() {
             <pre><code>// Nama   : USMAN YAKIN TRIO SINADA
 // Nim    : 251410006
 // Kelas  : Si2A
-
 class Person {
-  String _name;  // Private attribute
-  int age;       // Public attribute
+  String _name; // Atribut private (diawali underscore)
+  int age;      // Atribut publik
 
   // Constructor
   Person(this._name, this.age);
 
-  // Setter untuk mengubah _name
-  void setName(String name) {
-    if (name.isNotEmpty) {
-      _name = name;
-    } else {
-      print('Nama tidak boleh kosong');
-    }
-  }
+  // Setter untuk mengubah nilai _name secara aman
+  void setName(String name) => _name = name;
 
-  // Getter untuk mengambil _name
+  // Getter untuk mengambil nilai _name
   String getName() => _name;
-  
-  // Method untuk menampilkan data
-  void displayInfo() {
-    print('Nama: $_name, Umur: $age');
-  }
 }
 
 void main() {
-  // Membuat objek
+  // Membuat objek dari class Person
   Person person = Person("USMAN YAKIN TRIO SINADA", 18);
-  
-  print('=== DATA AWAL ===');
-  person.displayInfo();
-  
-  // Mengubah nama melalui setter
-  print('\n=== SETELAH DIUBAH ===');
-  person.setName("USMAN");
-  person.displayInfo();
-  
-  // Mengakses melalui getter
-  print('\n=== MENGGUNAKAN GETTER ===');
-  print('Nama dari getter: ${person.getName()}');
-  print('Umur (public): ${person.age}');
+
+  print(person.age);        // Menampilkan umur
+  person.setName("USMAN");  // Mengubah nama
+  print(person.getName());  // Menampilkan nama hasil getter
 }</code></pre>
             <div class="btn-group">
                 <button onclick="openModal('https://dartpad.dev/7485567e04225ae90334f2de05704956?theme=dark', 'Demo Encapsulation')" class="popup-btn">🔒 Buka Demo Encapsulation di Popup</button>
@@ -496,52 +456,19 @@ void main() {
             <pre><code>// Nama   : USMAN YAKIN TRIO SINADA
 // Nim    : 251410006
 // Kelas  : Si2A
-
 class Product {
-  String nama;
-  double harga;
-  int stok;
-  String kategori;
+  String nama; // Nama produk (contoh: Laptop)
 
-  // Constructor dengan named parameters
-  Product({
-    required this.nama,
-    required this.harga,
-    this.stok = 0,
-    this.kategori = 'Umum',
-  });
-
-  void displayInfo() {
-    print('''
-    Nama Produk : $nama
-    Harga      : Rp${harga.toStringAsFixed(0)}
-    Stok       : $stok
-    Kategori   : $kategori
-    ''');
-  }
+  // Constructor
+  Product(this.nama);
 }
 
 void main() {
-  // Membuat produk dengan named parameters
-  Product produk1 = Product(
-    nama: "Usman Website", 
-    harga: 1500000,
-    stok: 10,
-    kategori: "Digital"
-  );
-  
-  Product produk2 = Product(
-    nama: "Cyber Security Course",
-    harga: 2500000,
-    // stok menggunakan default 0
-    // kategori menggunakan default 'Umum'
-  );
-  
-  print('=== PRODUK 1 ===');
-  produk1.displayInfo();
-  
-  print('=== PRODUK 2 (dengan default value) ===');
-  produk2.displayInfo();
+  // Membuat objek produk1 dari class Product
+  Product produk1 = Product("Usman Website");
+
+  // Menampilkan atribut nama
+  print(produk1.nama);
 }</code></pre>
             <div class="btn-group">
                 <button onclick="openModal('https://dartpad.dev/040a443efe898a4f595f6c4cc9dda6d2?theme=dark', 'Demo Named Parameter')" class="popup-btn">📦 Buka Demo Named Parameter di Popup</button>
