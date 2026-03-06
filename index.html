@@ -1,274 +1,358 @@
 <!DOCTYPE html> 
 <html lang="id"> 
 <head> 
-<meta charset="UTF-8"> 
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-<title>Laporan OOP Dart - Cyber Virus</title> 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet"> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Laporan OOP Dart - Cyber Virus</title> 
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet"> 
+    <style> 
+        body{ 
+            margin:0; 
+            font-family:'LegoThick',sans-serif; 
+            background:#000; 
+            color:#00ff9f; 
+            background-image: linear-gradient(rgba(0,255,150,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,150,0.08) 1px, transparent 1px); 
+            background-size:40px 40px; 
+        } 
+        header{ 
+            text-align:center; 
+            padding:40px; 
+            background:#010a05; 
+            border-bottom:3px solid #00ff9f; 
+            box-shadow:0 0 25px #00ff9f; 
+        } 
+        header h1{ 
+            font-size:26px; 
+            color:#00ff9f; 
+            text-shadow:0 0 10px #00ff9f,0 0 30px #00ff9f; 
+        } 
+        header p{ 
+            color:#7affc7; 
+        } 
+        .container{ 
+            max-width:1100px; 
+            margin:auto; 
+            padding:40px 20px; 
+        } 
+        .card{ 
+            background:rgba(0,20,10,0.85); 
+            padding:30px; 
+            margin-bottom:40px; 
+            border:1px solid #00ff9f; 
+            border-radius:10px; 
+            box-shadow:0 0 15px #00ff9f inset,0 0 20px #00ff9f; 
+            transition:0.3s; 
+        } 
+        .card:hover{ 
+            box-shadow:0 0 25px #00ff9f,0 0 60px #00ff9f; 
+            transform:translateY(-6px); 
+        } 
+        h2{ 
+            color:#00ff9f; 
+            margin-bottom:20px; 
+            text-shadow:0 0 10px #00ff9f; 
+        } 
+        p,li{ 
+            line-height:1.7; 
+            color:#b8ffe7; 
+        } 
+        pre{ 
+            background:#000; 
+            color:#00ff9f; 
+            padding:20px; 
+            border-radius:10px; 
+            border:1px solid #00ff9f; 
+            box-shadow:0 0 10px #00ff9f inset; 
+            overflow-x:auto; 
+        } 
+        iframe{ 
+            width:100%; 
+            height:500px; 
+            margin-top:20px; 
+            border:1px solid #00ff9f; 
+            border-radius:10px; 
+            box-shadow:0 0 20px #00ff9f; 
+        } 
+        .comment-box{ 
+            background:#000; 
+            padding:20px; 
+            border-radius:10px; 
+            border:1px solid #00ff9f; 
+            box-shadow:0 0 20px #00ff9f; 
+            margin-bottom:40px; 
+        } 
+        input,textarea{ 
+            width:100%; 
+            padding:10px; 
+            margin-bottom:10px; 
+            background:#000; 
+            border:1px solid #00ff9f; 
+            color:#00ff9f; 
+            font-family:'Orbitron'; 
+        } 
+        button{ 
+            background:#00ff9f; 
+            color:black; 
+            border:none; 
+            padding:10px 20px; 
+            cursor:pointer; 
+            box-shadow:0 0 10px #00ff9f; 
+            font-family:'Orbitron'; 
+            margin-right:10px; 
+            margin-top:10px; 
+        } 
+        button:hover{ 
+            box-shadow:0 0 20px #00ff9f,0 0 40px #00ff9f; 
+        } 
+        .btn-group{ 
+            display:flex; 
+            flex-wrap:wrap; 
+            gap:10px; 
+            margin:20px 0; 
+        } 
+        .popup-btn{ 
+            background:transparent; 
+            border:1px solid #00ff9f; 
+            color:#00ff9f; 
+        } 
+        .popup-btn:hover{ 
+            background:#00ff9f; 
+            color:#000; 
+        } 
+        footer{ 
+            text-align:center; 
+            padding:20px; 
+            background:#010a05; 
+            border-top:3px solid #00ff9f; 
+            box-shadow:0 0 20px #00ff9f; 
+            color:#7affc7; 
+        } 
+    </style> 
+</head> 
+<body> 
+    <header> 
+        <h1>OOP DART - OBJECT ORIENTED PROGRAMMING</h1> 
+        <p>USMAN YAKIN TRIO SINADA | NIM: 251410006</p> 
+    </header> 
+    
+    <div class="container"> 
+        <div class="comment-box"> 
+            <h2>1. PENGERTIAN OOP</h2> 
+            <p>Object Oriented Programming (OOP) adalah paradigma pemrograman yang menggunakan objek sebagai dasar perancangan program. Pendekatan ini memungkinkan kode menjadi lebih terstruktur, modular, dan mudah dikembangkan.</p> 
+        </div> 
 
-<style> 
-body{
-margin:0;
-font-family:'Orbitron',sans-serif;
-background:#000;
-color:#00ff9f;
-background-image: linear-gradient(rgba(0,255,150,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,150,0.08) 1px, transparent 1px);
-background-size:40px 40px;
+        <!-- CLASS DAN OBJECT -->
+        <div class="card"> 
+            <h2>2. Class Dan Object</h2> 
+            <p><b>Class</b> merupakan blueprint atau cetak biru yang digunakan untuk membuat objek. Class berisi atribut (variabel) yang menggambarkan karakteristik suatu objek serta method (fungsi) yang menggambarkan perilaku objek tersebut. Sedangkan <b>object</b> merupakan instansi dari sebuah class.</p> 
+            <pre><code>// Nama   : USMAN YAKIN TRIO SINADA
+// Nim    : 251410006
+// Kelas  : Si2Aclass Car 
+                {
+    String? model;
+    String? color;
+    
+    void start() { 
+        print('Car started!'); 
+    }
+    void stop() { 
+        print('Car stopped!'); 
+    }
+}</code></pre>
+            <div class="btn-group">
+                <button onclick="openPopup('https://dartpad.dev/01e4151ce06fb25f27ca57d7c7c86a48')" class="popup-btn">🚗 Buka Demo Class & Object di Popup</button>
+            </div>
+            <iframe src="https://dartpad.dev/01e4151ce06fb25f27ca57d7c7c86a48"></iframe> 
+        </div> 
+
+        <!-- CONSTRUCTOR -->
+        <div class="card"> 
+            <h2>3. CONSTRUCTOR</h2> 
+            <p><b>Constructor</b> adalah method khusus untuk inisialisasi nilai awal pada objek ketika objek dibuat.</p> 
+            <pre><code>// Nama   : USMAN YAKIN TRIO SINADA
+// Nim    : 251410006
+// Kelas  : Si2A
+class Mahasiswa {
+  String nama; // nama : USMAN YAKIN TRIO SINADA
+  String nim;  // nim  : 251410006
+  double ipk;  // ipk  : 3.90
+
+  // Constructor Mahasiswa (Menginisialisasi data input)
+  Mahasiswa(this.nama, this.nim, this.ipk);
+
+  // Method untuk menampilkan data mahasiswa ke konsol
+  void tampilkanData() {
+    print('Nama : $nama');
+    print('NIM  : $nim');
+    print('IPK  : $ipk');
+  }
 }
 
-header{
-text-align:center;
-padding:40px;
-background:#010a05;
-border-bottom:3px solid #00ff9f;
-box-shadow:0 0 25px #00ff9f;
+void main() {
+  // Membuat objek mhs1 dari class Mahasiswa
+  Mahasiswa mhs1 = Mahasiswa("USMAN YAKIN TRIO SINADA", "251410006", 3.90);
+
+  mhs1.tampilkanData(); // Memanggil method tampilkanData
+}
+Comment
+</code></pre>
+            <div class="btn-group">
+                <button onclick="openPopup('https://dartpad.dev/3f193fd7486b8dc7a2c4c54b9838cc46')" class="popup-btn">🔧 Buka Demo Constructor di Popup</button>
+            </div>
+            <iframe src="https://dartpad.dev/3f193fd7486b8dc7a2c4c54b9838cc46"></iframe> 
+        </div> 
+
+        <!-- VALIDASI DATA -->
+        <div class="card"> 
+            <h2>4. VALIDASI DATA</h2> 
+            <p><b>Validasi data</b> dalam constructor memastikan data yang dimasukkan sesuai aturan.</p> 
+            <pre><code>// Nama   : USMAN YAKIN TRIO SINADA
+// Nim    : 251410006
+// Kelas  : Si2A
+class Mahasiswa {
+  String nama; // nama : USMAN YAKIN TRIO SINADA
+  String nim;  // nim  : 251410006
+  double ipk;  // ipk  : 3.90
+
+  // Constructor Mahasiswa (Menginisialisasi data input)
+  Mahasiswa(this.nama, this.nim, this.ipk);
+
+  // Method untuk menampilkan data mahasiswa ke konsol
+  void tampilkanData() {
+    print('Nama : $nama');
+    print('NIM  : $nim');
+    print('IPK  : $ipk');
+  }
 }
 
-header h1{
-font-size:26px;
-color:#00ff9f;
-text-shadow:0 0 10px #00ff9f,0 0 30px #00ff9f;
+void main() {
+  // Membuat objek mhs1 dari class Mahasiswa
+  Mahasiswa mhs1 = Mahasiswa("USMAN YAKIN TRIO SINADA", "251410006", 3.90);
+
+  mhs1.tampilkanData(); // Memanggil method tampilkanData
+}
+Comment
+</code></pre>
+            <div class="btn-group">
+                <button onclick="openPopup('https://dartpad.dev/412250cf409edf27ef815bf5fc8561e8')" class="popup-btn">✅ Buka Demo Validasi di Popup</button>
+            </div>
+            <iframe src="https://dartpad.dev/412250cf409edf27ef815bf5fc8561e8"></iframe> 
+        </div> 
+
+        <!-- ENCAPSULATION -->
+        <div class="card"> 
+            <h2>5. ENCAPSULATION</h2> 
+            <p><b>Encapsulation</b> membungkus data dan method serta membatasi akses langsung dari luar class.</p> 
+            <pre><code>// Nama   : USMAN YAKIN TRIO SINADA
+// Nim    : 251410006
+// Kelas  : Si2A
+class Person {
+  String _name; // Atribut private (diawali underscore)
+  int age;      // Atribut publik
+
+  // Constructor
+  Person(this._name, this.age);
+
+  // Setter untuk mengubah nilai _name secara aman
+  void setName(String name) => _name = name;
+
+  // Getter untuk mengambil nilai _name
+  String getName() => _name;
 }
 
-header p{
-color:#7affc7;
+void main() {
+  // Membuat objek dari class Person
+  Person person = Person("USMAN YAKIN TRIO SINADA", 18);
+
+  print(person.age);        // Menampilkan umur
+  person.setName("USMAN");  // Mengubah nama
+  print(person.getName());  // Menampilkan nama hasil getter
+}</code></pre>
+            <div class="btn-group">
+                <button onclick="openPopup('https://dartpad.dev/7485567e04225ae90334f2de05704956')" class="popup-btn">🔒 Buka Demo Encapsulation di Popup</button>
+            </div>
+            <iframe src="https://dartpad.dev/7485567e04225ae90334f2de05704956"></iframe> 
+        </div> 
+
+        <!-- NAMED PARAMETER -->
+        <div class="card"> 
+            <h2>6. NAMED PARAMETER</h2> 
+            <p><b>Named parameter</b> memungkinkan parameter dipanggil berdasarkan nama, membuat kode lebih jelas.</p> 
+            <pre><code>// Nama   : USMAN YAKIN TRIO SINADA
+// Nim    : 251410006
+// Kelas  : Si2A
+class Product {
+  String nama; // Nama produk (contoh: Laptop)
+
+  // Constructor
+  Product(this.nama);
 }
 
-.container{
-max-width:1100px;
-margin:auto;
-padding:40px 20px;
-}
+void main() {
+  // Membuat objek produk1 dari class Product
+  Product produk1 = Product("Usman Website");
 
-.card{
-background:rgba(0,20,10,0.85);
-padding:30px;
-margin-bottom:40px;
-border:1px solid #00ff9f;
-border-radius:10px;
-box-shadow:0 0 15px #00ff9f inset,0 0 20px #00ff9f;
-transition:0.3s;
-}
+  // Menampilkan atribut nama
+  print(produk1.nama);
+}</code></pre>
+            <div class="btn-group">
+                <button onclick="openPopup('https://dartpad.dev/040a443efe898a4f595f6c4cc9dda6d2')" class="popup-btn">📦 Buka Demo Named Parameter di Popup</button>
+            </div>
+            <iframe src="https://dartpad.dev/040a443efe898a4f595f6c4cc9dda6d2"></iframe> 
+        </div> 
 
-.card:hover{
-box-shadow:0 0 25px #00ff9f,0 0 60px #00ff9f;
-transform:translateY(-6px);
-}
+        <!-- KESIMPULAN -->
+        <div class="card"> 
+            <h2>7. KESIMPULAN</h2> 
+            <p>Konsep OOP seperti class, object, constructor, validasi data, encapsulation, dan named parameter membuat program lebih terstruktur, mudah dipelihara, dan dapat dikembangkan menjadi sistem yang lebih kompleks.</p> 
+        </div> 
+    </div> 
 
-h2{
-color:#00ff9f;
-margin-bottom:20px;
-text-shadow:0 0 10px #00ff9f;
-}
+    <footer> 
+        © 2026 - UNIVERSITAS BINADARMA 
+    </footer> 
 
-p,li{
-line-height:1.7;
-color:#b8ffe7;
-}
+    <script>
+        // Fungsi untuk membuka iframe di popup
+        function openPopup(url) {
+            // Tentukan ukuran popup
+            const width = 1200;
+            const height = 700;
+            
+            // Hitung posisi di tengah layar
+            const left = (window.screen.width / 2) - (width / 2);
+            const top = (window.screen.height / 2) - (height / 2);
+            
+            // Buka popup dengan konfigurasi cyber
+            const popup = window.open(
+                url, 
+                'DartPad Demo', 
+                `width=${width},height=${height},left=${left},top=${top},toolbar=no,menubar=no,scrollbars=yes,resizable=yes,status=no`
+            );
+            
+            // Optional: tambahkan styling ke popup jika memungkinkan
+            if (popup) {
+                // Fokus ke popup
+                popup.focus();
+            } else {
+                alert('Popup terblokir! Izinkan popup untuk situs ini.');
+            }
+        }
 
-pre{
-background:#000;
-color:#00ff9f;
-padding:20px;
-border-radius:10px;
-border:1px solid #00ff9f;
-box-shadow:0 0 10px #00ff9f inset;
-overflow-x:auto;
-}
-
-iframe{
-width:100%;
-height:500px;
-margin-top:20px;
-border:1px solid #00ff9f;
-border-radius:10px;
-box-shadow:0 0 20px #00ff9f;
-}
-
-.comment-box{
-background:#000;
-padding:20px;
-border-radius:10px;
-border:1px solid #00ff9f;
-box-shadow:0 0 20px #00ff9f;
-margin-bottom:40px;
-}
-
-input,textarea{
-width:100%;
-padding:10px;
-margin-bottom:10px;
-background:#000;
-border:1px solid #00ff9f;
-color:#00ff9f;
-font-family:'Orbitron';
-}
-
-button{
-background:#00ff9f;
-color:black;
-border:none;
-padding:10px 20px;
-cursor:pointer;
-box-shadow:0 0 10px #00ff9f;
-font-family:'Orbitron';
-margin-right:10px;
-margin-top:10px;
-}
-
-button:hover{
-box-shadow:0 0 20px #00ff9f,0 0 40px #00ff9f;
-}
-
-.btn-group{
-display:flex;
-flex-wrap:wrap;
-gap:10px;
-margin:20px 0;
-}
-
-.popup-btn{
-background:transparent;
-border:1px solid #00ff9f;
-color:#00ff9f;
-}
-
-.popup-btn:hover{
-background:#00ff9f;
-color:#000;
-}
-
-footer{
-text-align:center;
-padding:20px;
-background:#010a05;
-border-top:3px solid #00ff9f;
-box-shadow:0 0 20px #00ff9f;
-color:#7affc7;
-}
-</style>
-</head>
-
-<body>
-
-<header>
-<h1>OOP DART - OBJECT ORIENTED PROGRAMMING</h1>
-<p>USMAN YAKIN TRIO SINADA | NIM: 251410006</p>
-</header>
-
-<div class="container">
-
-<div class="comment-box">
-<h2>1. PENGERTIAN OOP</h2>
-<p>Object Oriented Programming (OOP) adalah paradigma pemrograman yang menggunakan objek sebagai dasar perancangan program.</p>
-</div>
-
-<!-- CLASS DAN OBJECT -->
-<div class="card">
-
-<h2>2. Class Dan Object</h2>
-
-<div class="btn-group">
-<button onclick="openPopup('https://dartpad.dev/01e4151ce06fb25f27ca57d7c7c86a48')" class="popup-btn">
-🚀 Buka Popup Demo
-</button>
-</div>
-
-<iframe src="https://dartpad.dev/01e4151ce06fb25f27ca57d7c7c86a48"></iframe>
-
-</div>
-
-<!-- CONSTRUCTOR -->
-<div class="card">
-
-<h2>3. CONSTRUCTOR</h2>
-
-<div class="btn-group">
-<button onclick="openPopup('https://dartpad.dev/3f193fd7486b8dc7a2c4c54b9838cc46')" class="popup-btn">
-🚀 Buka Popup Demo
-</button>
-</div>
-
-<iframe src="https://dartpad.dev/3f193fd7486b8dc7a2c4c54b9838cc46"></iframe>
-
-</div>
-
-<!-- VALIDASI DATA -->
-<div class="card">
-
-<h2>4. VALIDASI DATA</h2>
-
-<div class="btn-group">
-<button onclick="openPopup('https://dartpad.dev/412250cf409edf27ef815bf5fc8561e8')" class="popup-btn">
-🚀 Buka Popup Demo
-</button>
-</div>
-
-<iframe src="https://dartpad.dev/412250cf409edf27ef815bf5fc8561e8"></iframe>
-
-</div>
-
-<!-- ENCAPSULATION -->
-<div class="card">
-
-<h2>5. ENCAPSULATION</h2>
-
-<div class="btn-group">
-<button onclick="openPopup('https://dartpad.dev/7485567e04225ae90334f2de05704956')" class="popup-btn">
-🚀 Buka Popup Demo
-</button>
-</div>
-
-<iframe src="https://dartpad.dev/7485567e04225ae90334f2de05704956"></iframe>
-
-</div>
-
-<!-- NAMED PARAMETER -->
-<div class="card">
-
-<h2>6. NAMED PARAMETER</h2>
-
-<div class="btn-group">
-<button onclick="openPopup('https://dartpad.dev/040a443efe898a4f595f6c4cc9dda6d2')" class="popup-btn">
-🚀 Buka Popup Demo
-</button>
-</div>
-
-<iframe src="https://dartpad.dev/040a443efe898a4f595f6c4cc9dda6d2"></iframe>
-
-</div>
-
-</div>
-
-<footer>
-© 2026 - UNIVERSITAS BINADARMA
-</footer>
-
-<script>
-
-function openPopup(url){
-
-const width=1200;
-const height=700;
-
-const left=(window.screen.width/2)-(width/2);
-const top=(window.screen.height/2)-(height/2);
-
-const popup=window.open(
-url,
-'DartPad Demo',
-`width=${width},height=${height},left=${left},top=${top},toolbar=no,menubar=no,scrollbars=yes,resizable=yes,status=no`
-);
-
-if(popup){
-popup.focus();
-}else{
-alert("Popup terblokir! Izinkan popup untuk situs ini.");
-}
-
-}
-
-</script>
-
-</body>
+        // Fungsi comment yang sudah ada
+        function addComment(event){
+            event.preventDefault();
+            const name=document.getElementById("name").value;
+            const comment=document.getElementById("comment").value;
+            const box=document.createElement("div");
+            box.style.marginTop="15px";
+            box.style.borderTop="1px solid #00ffff";
+            box.style.paddingTop="10px";
+            box.innerHTML="<strong>"+name+"</strong><br>"+comment;
+            document.getElementById("comment-list").appendChild(box);
+            document.getElementById("name").value="";
+            document.getElementById("comment").value="";
+        }
+    </script>
+</body> 
 </html>
