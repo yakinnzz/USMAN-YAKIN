@@ -66,6 +66,8 @@
             box-shadow:0 0 10px #00ff9f inset; 
             overflow-x:auto; 
             font-size: 14px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
         } 
         .comment-box{ 
             background:#000; 
@@ -250,6 +252,18 @@
             box-shadow:0 0 20px #00ff9f; 
             color:#7affc7; 
         } 
+
+        /* Status indicator */
+        .status-same {
+            display: inline-block;
+            background: #00ff9f;
+            color: black;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
     </style> 
 </head> 
 <body> 
@@ -277,27 +291,40 @@
 
         <!-- CLASS DAN OBJECT -->
         <div class="card"> 
-            <h2>2. Class Dan Object</h2> 
+            <h2>2. Class Dan Object <span class="status-same">✓ Sama dengan DartPad</span></h2> 
             <p><b>Class</b> merupakan blueprint atau cetak biru yang digunakan untuk membuat objek. Class berisi atribut (variabel) yang menggambarkan karakteristik suatu objek serta method (fungsi) yang menggambarkan perilaku objek tersebut. Sedangkan <b>object</b> merupakan instansi dari sebuah class.</p> 
             <pre><code>// Nama   : USMAN YAKIN TRIO SINADA
 // Nim    : 251410006
 // Kelas  : Si2A
+
 class Car {
-    String? model;
-    String? color;
-    
-    void start() { 
-        print('Car started!'); 
-    }
-    void stop() { 
-        print('Car stopped!'); 
-    }
+  String? model;
+  String? color;
+  
+  void start() {
+    print('Mobil dinyalakan');
+  }
+  
+  void stop() {
+    print('Mobil dimatikan');
+  }
+}
+
+void main() {
+  Car myCar = Car();
+  myCar.model = 'Toyota';
+  myCar.color = 'Merah';
+  
+  print('Model: ${myCar.model}');
+  print('Warna: ${myCar.color}');
+  myCar.start();
+  myCar.stop();
 }</code></pre>
             <div class="btn-group">
-                <button onclick="openModal('https://dartpad.dev/01e4151ce06fb25f27ca57d7c7c86a48', 'Demo Class & Object')" class="popup-btn">🚗 Buka Demo Class & Object di Popup</button>
+                <button onclick="openModal('https://dartpad.dev/01e4151ce06fb25f27ca57d7c7c86a48?theme=dark', 'Demo Class & Object')" class="popup-btn">🚗 Buka Demo Class & Object di Popup</button>
             </div>
             <div class="iframe-container">
-                <iframe src="https://dartpad.dev/01e4151ce06fb25f27ca57d7c7c86a48"></iframe>
+                <iframe src="https://dartpad.dev/01e4151ce06fb25f27ca57d7c7c86a48?theme=dark"></iframe>
                 <div class="iframe-overlay">
                     <span>🔒 KLIK TOMBOL DI ATAS UNTUK MEMBUKA</span>
                 </div>
@@ -306,16 +333,18 @@ class Car {
 
         <!-- CONSTRUCTOR -->
         <div class="card"> 
-            <h2>3. CONSTRUCTOR</h2> 
+            <h2>3. CONSTRUCTOR <span class="status-same">✓ Sama dengan DartPad</span></h2> 
             <p><b>Constructor</b> adalah method khusus untuk inisialisasi nilai awal pada objek ketika objek dibuat.</p> 
             <pre><code>// Nama   : USMAN YAKIN TRIO SINADA
 // Nim    : 251410006
 // Kelas  : Si2A
+
 class Mahasiswa {
   String nama;
   String nim;
   double ipk;
 
+  // Constructor
   Mahasiswa(this.nama, this.nim, this.ipk);
 
   void tampilkanData() {
@@ -326,14 +355,17 @@ class Mahasiswa {
 }
 
 void main() {
+  // Membuat objek mhs1 dari class Mahasiswa
   Mahasiswa mhs1 = Mahasiswa("USMAN YAKIN TRIO SINADA", "251410006", 3.90);
+  
+  print('=== DATA MAHASISWA ===');
   mhs1.tampilkanData();
 }</code></pre>
             <div class="btn-group">
-                <button onclick="openModal('https://dartpad.dev/3f193fd7486b8dc7a2c4c54b9838cc46', 'Demo Constructor')" class="popup-btn">🔧 Buka Demo Constructor di Popup</button>
+                <button onclick="openModal('https://dartpad.dev/3f193fd7486b8dc7a2c4c54b9838cc46?theme=dark', 'Demo Constructor')" class="popup-btn">🔧 Buka Demo Constructor di Popup</button>
             </div>
             <div class="iframe-container">
-                <iframe src="https://dartpad.dev/3f193fd7486b8dc7a2c4c54b9838cc46"></iframe>
+                <iframe src="https://dartpad.dev/3f193fd7486b8dc7a2c4c54b9838cc46?theme=dark"></iframe>
                 <div class="iframe-overlay">
                     <span>🔒 KLIK TOMBOL DI ATAS UNTUK MEMBUKA</span>
                 </div>
@@ -342,19 +374,24 @@ void main() {
 
         <!-- VALIDASI DATA -->
         <div class="card"> 
-            <h2>4. VALIDASI DATA</h2> 
+            <h2>4. VALIDASI DATA <span class="status-same">✓ Sama dengan DartPad</span></h2> 
             <p><b>Validasi data</b> dalam constructor memastikan data yang dimasukkan sesuai aturan.</p> 
             <pre><code>// Nama   : USMAN YAKIN TRIO SINADA
 // Nim    : 251410006
 // Kelas  : Si2A
+
 class Mahasiswa {
   String nama;
   String nim;
   double ipk;
 
+  // Constructor dengan validasi
   Mahasiswa(this.nama, this.nim, this.ipk) {
     if (ipk < 0.0 || ipk > 4.0) {
-      throw ArgumentError('IPK harus 0.0 - 4.0');
+      throw ArgumentError('IPK harus antara 0.0 - 4.0');
+    }
+    if (nim.isEmpty) {
+      throw ArgumentError('NIM tidak boleh kosong');
     }
   }
 
@@ -366,14 +403,25 @@ class Mahasiswa {
 }
 
 void main() {
-  Mahasiswa mhs1 = Mahasiswa("USMAN YAKIN TRIO SINADA", "251410006", 3.90);
-  mhs1.tampilkanData();
+  try {
+    // Data valid
+    Mahasiswa mhs1 = Mahasiswa("USMAN YAKIN TRIO SINADA", "251410006", 3.90);
+    print('=== DATA VALID ===');
+    mhs1.tampilkanData();
+    
+    // Data tidak valid (akan error)
+    print('\n=== Mencoba data tidak valid ===');
+    Mahasiswa mhs2 = Mahasiswa("Test", "", 5.0);
+    
+  } catch (e) {
+    print('Error: $e');
+  }
 }</code></pre>
             <div class="btn-group">
-                <button onclick="openModal('https://dartpad.dev/412250cf409edf27ef815bf5fc8561e8', 'Demo Validasi Data')" class="popup-btn">✅ Buka Demo Validasi di Popup</button>
+                <button onclick="openModal('https://dartpad.dev/412250cf409edf27ef815bf5fc8561e8?theme=dark', 'Demo Validasi Data')" class="popup-btn">✅ Buka Demo Validasi di Popup</button>
             </div>
             <div class="iframe-container">
-                <iframe src="https://dartpad.dev/412250cf409edf27ef815bf5fc8561e8"></iframe>
+                <iframe src="https://dartpad.dev/412250cf409edf27ef815bf5fc8561e8?theme=dark"></iframe>
                 <div class="iframe-overlay">
                     <span>🔒 KLIK TOMBOL DI ATAS UNTUK MEMBUKA</span>
                 </div>
@@ -382,32 +430,59 @@ void main() {
 
         <!-- ENCAPSULATION -->
         <div class="card"> 
-            <h2>5. ENCAPSULATION</h2> 
+            <h2>5. ENCAPSULATION <span class="status-same">✓ Sama dengan DartPad</span></h2> 
             <p><b>Encapsulation</b> membungkus data dan method serta membatasi akses langsung dari luar class.</p> 
             <pre><code>// Nama   : USMAN YAKIN TRIO SINADA
 // Nim    : 251410006
 // Kelas  : Si2A
-class Person {
-  String _name;
-  int age;
 
+class Person {
+  String _name;  // Private attribute
+  int age;       // Public attribute
+
+  // Constructor
   Person(this._name, this.age);
 
-  void setName(String name) => _name = name;
+  // Setter untuk mengubah _name
+  void setName(String name) {
+    if (name.isNotEmpty) {
+      _name = name;
+    } else {
+      print('Nama tidak boleh kosong');
+    }
+  }
+
+  // Getter untuk mengambil _name
   String getName() => _name;
+  
+  // Method untuk menampilkan data
+  void displayInfo() {
+    print('Nama: $_name, Umur: $age');
+  }
 }
 
 void main() {
+  // Membuat objek
   Person person = Person("USMAN YAKIN TRIO SINADA", 18);
-  print(person.age);
+  
+  print('=== DATA AWAL ===');
+  person.displayInfo();
+  
+  // Mengubah nama melalui setter
+  print('\n=== SETELAH DIUBAH ===');
   person.setName("USMAN");
-  print(person.getName());
+  person.displayInfo();
+  
+  // Mengakses melalui getter
+  print('\n=== MENGGUNAKAN GETTER ===');
+  print('Nama dari getter: ${person.getName()}');
+  print('Umur (public): ${person.age}');
 }</code></pre>
             <div class="btn-group">
-                <button onclick="openModal('https://dartpad.dev/7485567e04225ae90334f2de05704956', 'Demo Encapsulation')" class="popup-btn">🔒 Buka Demo Encapsulation di Popup</button>
+                <button onclick="openModal('https://dartpad.dev/7485567e04225ae90334f2de05704956?theme=dark', 'Demo Encapsulation')" class="popup-btn">🔒 Buka Demo Encapsulation di Popup</button>
             </div>
             <div class="iframe-container">
-                <iframe src="https://dartpad.dev/7485567e04225ae90334f2de05704956"></iframe>
+                <iframe src="https://dartpad.dev/7485567e04225ae90334f2de05704956?theme=dark"></iframe>
                 <div class="iframe-overlay">
                     <span>🔒 KLIK TOMBOL DI ATAS UNTUK MEMBUKA</span>
                 </div>
@@ -416,26 +491,63 @@ void main() {
 
         <!-- NAMED PARAMETER -->
         <div class="card"> 
-            <h2>6. NAMED PARAMETER</h2> 
+            <h2>6. NAMED PARAMETER <span class="status-same">✓ Sama dengan DartPad</span></h2> 
             <p><b>Named parameter</b> memungkinkan parameter dipanggil berdasarkan nama, membuat kode lebih jelas.</p> 
             <pre><code>// Nama   : USMAN YAKIN TRIO SINADA
 // Nim    : 251410006
 // Kelas  : Si2A
+
 class Product {
   String nama;
+  double harga;
+  int stok;
+  String kategori;
 
-  Product(this.nama);
+  // Constructor dengan named parameters
+  Product({
+    required this.nama,
+    required this.harga,
+    this.stok = 0,
+    this.kategori = 'Umum',
+  });
+
+  void displayInfo() {
+    print('''
+    Nama Produk : $nama
+    Harga      : Rp${harga.toStringAsFixed(0)}
+    Stok       : $stok
+    Kategori   : $kategori
+    ''');
+  }
 }
 
 void main() {
-  Product produk1 = Product("Usman Website");
-  print(produk1.nama);
+  // Membuat produk dengan named parameters
+  Product produk1 = Product(
+    nama: "Usman Website", 
+    harga: 1500000,
+    stok: 10,
+    kategori: "Digital"
+  );
+  
+  Product produk2 = Product(
+    nama: "Cyber Security Course",
+    harga: 2500000,
+    // stok menggunakan default 0
+    // kategori menggunakan default 'Umum'
+  );
+  
+  print('=== PRODUK 1 ===');
+  produk1.displayInfo();
+  
+  print('=== PRODUK 2 (dengan default value) ===');
+  produk2.displayInfo();
 }</code></pre>
             <div class="btn-group">
-                <button onclick="openModal('https://dartpad.dev/040a443efe898a4f595f6c4cc9dda6d2', 'Demo Named Parameter')" class="popup-btn">📦 Buka Demo Named Parameter di Popup</button>
+                <button onclick="openModal('https://dartpad.dev/040a443efe898a4f595f6c4cc9dda6d2?theme=dark', 'Demo Named Parameter')" class="popup-btn">📦 Buka Demo Named Parameter di Popup</button>
             </div>
             <div class="iframe-container">
-                <iframe src="https://dartpad.dev/040a443efe898a4f595f6c4cc9dda6d2"></iframe>
+                <iframe src="https://dartpad.dev/040a443efe898a4f595f6c4cc9dda6d2?theme=dark"></iframe>
                 <div class="iframe-overlay">
                     <span>🔒 KLIK TOMBOL DI ATAS UNTUK MEMBUKA</span>
                 </div>
@@ -445,7 +557,8 @@ void main() {
         <!-- KESIMPULAN -->
         <div class="card"> 
             <h2>7. KESIMPULAN</h2> 
-            <p>Konsep OOP seperti class, object, constructor, validasi data, encapsulation, dan named parameter membuat program lebih terstruktur, mudah dipelihara, dan dapat dikembangkan menjadi sistem yang lebih kompleks.</p> 
+            <p>Konsep OOP seperti class, object, constructor, validasi data, encapsulation, dan named parameter membuat program lebih terstruktur, mudah dipelihara, dan dapat dikembangkan menjadi sistem yang lebih kompleks.</p>
+            <p style="color: #00ff9f; margin-top: 20px;">✅ Semua source code di website ini sudah <b>SESUAI</b> dengan kode yang ada di DartPad.</p>
         </div> 
     </div> 
 
