@@ -189,17 +189,33 @@
         <div class="card"> 
             <h2>4. VALIDASI DATA</h2> 
             <p><b>Validasi data</b> dalam constructor memastikan data yang dimasukkan sesuai aturan.</p> 
-            <pre><code>class Mahasiswa {
-    String nama;
-    String nim;
-    double ipk;
-    
-    Mahasiswa(this.nama, this.nim, this.ipk) {
-        if (ipk < 0.0 || ipk > 4.0) {
-            throw ArgumentError('IPK harus 0.0 - 4.0');
-        }
-    }
-}</code></pre>
+            <pre><code>// Nama   : USMAN YAKIN TRIO SINADA
+// Nim    : 251410006
+// Kelas  : Si2A
+class Mahasiswa {
+  String nama; // nama : USMAN YAKIN TRIO SINADA
+  String nim;  // nim  : 251410006
+  double ipk;  // ipk  : 3.90
+
+  // Constructor Mahasiswa (Menginisialisasi data input)
+  Mahasiswa(this.nama, this.nim, this.ipk);
+
+  // Method untuk menampilkan data mahasiswa ke konsol
+  void tampilkanData() {
+    print('Nama : $nama');
+    print('NIM  : $nim');
+    print('IPK  : $ipk');
+  }
+}
+
+void main() {
+  // Membuat objek mhs1 dari class Mahasiswa
+  Mahasiswa mhs1 = Mahasiswa("USMAN YAKIN TRIO SINADA", "251410006", 3.90);
+
+  mhs1.tampilkanData(); // Memanggil method tampilkanData
+}
+Comment
+</code></pre>
             <div class="btn-group">
                 <button onclick="openPopup('https://dartpad.dev/412250cf409edf27ef815bf5fc8561e8')" class="popup-btn">✅ Buka Demo Validasi di Popup</button>
             </div>
@@ -210,14 +226,30 @@
         <div class="card"> 
             <h2>5. ENCAPSULATION</h2> 
             <p><b>Encapsulation</b> membungkus data dan method serta membatasi akses langsung dari luar class.</p> 
-            <pre><code>class Person {
-    String _name;
-    int age;
-    
-    Person(this._name, this.age);
-    
-    void setName(String name) { _name = name; }
-    String getName() { return _name; }
+            <pre><code>// Nama   : USMAN YAKIN TRIO SINADA
+// Nim    : 251410006
+// Kelas  : Si2A
+class Person {
+  String _name; // Atribut private (diawali underscore)
+  int age;      // Atribut publik
+
+  // Constructor
+  Person(this._name, this.age);
+
+  // Setter untuk mengubah nilai _name secara aman
+  void setName(String name) => _name = name;
+
+  // Getter untuk mengambil nilai _name
+  String getName() => _name;
+}
+
+void main() {
+  // Membuat objek dari class Person
+  Person person = Person("USMAN YAKIN TRIO SINADA", 18);
+
+  print(person.age);        // Menampilkan umur
+  person.setName("USMAN");  // Mengubah nama
+  print(person.getName());  // Menampilkan nama hasil getter
 }</code></pre>
             <div class="btn-group">
                 <button onclick="openPopup('https://dartpad.dev/7485567e04225ae90334f2de05704956')" class="popup-btn">🔒 Buka Demo Encapsulation di Popup</button>
@@ -229,20 +261,22 @@
         <div class="card"> 
             <h2>6. NAMED PARAMETER</h2> 
             <p><b>Named parameter</b> memungkinkan parameter dipanggil berdasarkan nama, membuat kode lebih jelas.</p> 
-            <pre><code>class Produk {
-    final String id;
-    final String nama;
-    final double harga;
-    final int stok;
-    final String kategori;
-    
-    Produk({
-        required this.id,
-        required this.nama,
-        required this.harga,
-        this.stok = 0,
-        this.kategori = 'Umum',
-    });
+            <pre><code>// Nama   : USMAN YAKIN TRIO SINADA
+// Nim    : 251410006
+// Kelas  : Si2A
+class Product {
+  String nama; // Nama produk (contoh: Laptop)
+
+  // Constructor
+  Product(this.nama);
+}
+
+void main() {
+  // Membuat objek produk1 dari class Product
+  Product produk1 = Product("Usman Website");
+
+  // Menampilkan atribut nama
+  print(produk1.nama);
 }</code></pre>
             <div class="btn-group">
                 <button onclick="openPopup('https://dartpad.dev/040a443efe898a4f595f6c4cc9dda6d2')" class="popup-btn">📦 Buka Demo Named Parameter di Popup</button>
