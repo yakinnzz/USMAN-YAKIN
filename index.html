@@ -112,14 +112,26 @@
             gap:10px;
             margin:20px 0;
         }
-        .popup-btn{
+        .demo-link{
+            display:inline-block;
             background:transparent;
             border:1px solid #00ff9f;
             color:#00ff9f;
+            padding:10px 20px;
+            cursor:pointer;
+            box-shadow:0 0 10px #00ff9f;
+            font-family:'Orbitron';
+            margin-right:10px;
+            margin-top:10px;
+            text-decoration:none;
+            transition:0.2s;
+            border-radius:2px;
         }
-        .popup-btn:hover{
+        .demo-link:hover{
             background:#00ff9f;
             color:#000;
+            box-shadow:0 0 20px #00ff9f,0 0 40px #00ff9f;
+            transform:scale(1.02);
         }
         footer{
             text-align:center;
@@ -128,28 +140,6 @@
             border-top:3px solid #00ff9f;
             box-shadow:0 0 20px #00ff9f;
             color:#7affc7;
-        }
-        /* gaya untuk link yang tampil seperti tombol */
-        .demo-link {
-            display: inline-block;
-            background: transparent;
-            border: 1px solid #00ff9f;
-            color: #00ff9f;
-            padding: 10px 20px;
-            cursor: pointer;
-            box-shadow: 0 0 10px #00ff9f;
-            font-family: 'Orbitron';
-            margin-right: 10px;
-            margin-top: 10px;
-            text-decoration: none;
-            transition: 0.2s;
-            border-radius: 2px;
-        }
-        .demo-link:hover {
-            background: #00ff9f;
-            color: #000;
-            box-shadow: 0 0 20px #00ff9f, 0 0 40px #00ff9f;
-            transform: scale(1.02);
         }
     </style>
 </head>
@@ -184,8 +174,8 @@ class Car {
     }
 }</code></pre>
             <div class="btn-group">
-                <!-- Tombol diubah menjadi link biasa yang navigasi di tab yang sama, tidak pakai popup -->
-                <a href="https://dartpad.dev/01e4151ce06fb25f27ca57d7c7c86a48" target="_self" class="demo-link">🚗 Demo Class & Object</a>
+                <!-- Link langsung ke raw Gist (ganti dengan URL gist asli kalau sudah punya) -->
+                <a href="https://gist.githubusercontent.com/username/01e4151ce06fb25f27ca57d7c7c86a48/raw/class_object.dart" target="_self" class="demo-link">🚗 Lihat Kode Class & Object di Gist</a>
             </div>
             <iframe src="https://dartpad.dev/01e4151ce06fb25f27ca57d7c7c86a48"></iframe>
         </div>
@@ -220,7 +210,7 @@ void main() {
   mhs1.tampilkanData(); // Memanggil method tampilkanData
 }</code></pre>
             <div class="btn-group">
-                <a href="https://dartpad.dev/3f193fd7486b8dc7a2c4c54b9838cc46" target="_self" class="demo-link">🔧 Demo Constructor</a>
+                <a href="https://gist.githubusercontent.com/username/3f193fd7486b8dc7a2c4c54b9838cc46/raw/constructor.dart" target="_self" class="demo-link">🔧 Lihat Kode Constructor di Gist</a>
             </div>
             <iframe src="https://dartpad.dev/3f193fd7486b8dc7a2c4c54b9838cc46"></iframe>
         </div>
@@ -251,7 +241,7 @@ void main() {
   mhs1.tampilkanData();
 }</code></pre>
             <div class="btn-group">
-                <a href="https://dartpad.dev/412250cf409edf27ef815bf5fc8561e8" target="_self" class="demo-link">✅ Demo Validasi</a>
+                <a href="https://gist.githubusercontent.com/username/412250cf409edf27ef815bf5fc8561e8/raw/validasi.dart" target="_self" class="demo-link">✅ Lihat Kode Validasi di Gist</a>
             </div>
             <iframe src="https://dartpad.dev/412250cf409edf27ef815bf5fc8561e8"></iframe>
         </div>
@@ -286,7 +276,7 @@ void main() {
   print(person.getName());  // Menampilkan nama hasil getter
 }</code></pre>
             <div class="btn-group">
-                <a href="https://dartpad.dev/7485567e04225ae90334f2de05704956" target="_self" class="demo-link">🔒 Demo Encapsulation</a>
+                <a href="https://gist.githubusercontent.com/username/7485567e04225ae90334f2de05704956/raw/encapsulation.dart" target="_self" class="demo-link">🔒 Lihat Kode Encapsulation di Gist</a>
             </div>
             <iframe src="https://dartpad.dev/7485567e04225ae90334f2de05704956"></iframe>
         </div>
@@ -313,7 +303,7 @@ void main() {
   print(produk1.nama);
 }</code></pre>
             <div class="btn-group">
-                <a href="https://dartpad.dev/040a443efe898a4f595f6c4cc9dda6d2" target="_self" class="demo-link">📦 Demo Named Parameter</a>
+                <a href="https://gist.githubusercontent.com/username/040a443efe898a4f595f6c4cc9dda6d2/raw/named_parameter.dart" target="_self" class="demo-link">📦 Lihat Kode Named Parameter di Gist</a>
             </div>
             <iframe src="https://dartpad.dev/040a443efe898a4f595f6c4cc9dda6d2"></iframe>
         </div>
@@ -330,8 +320,7 @@ void main() {
     </footer>
 
     <script>
-        // Semua fungsi popup telah dihapus. Tomol sekarang berupa link biasa.
-        // Fungsi addComment dibiarkan jika diperlukan, tapi tidak digunakan.
+        // Fungsi addComment jika dibutuhkan (untuk komentar)
         function addComment(event){
             event.preventDefault();
             const name=document.getElementById("name").value;
