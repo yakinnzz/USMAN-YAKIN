@@ -3,7 +3,7 @@
 <head> 
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>Laporan OOP Dart - Cyber Virus</title> 
+    <title>LAPORAN OOP DART - CYBER VIRUS</title> 
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet"> 
     <style> 
         body{ 
@@ -268,15 +268,15 @@
 </head> 
 <body> 
     <header> 
-        <h1>OOP DART - OBJECT ORIENTED PROGRAMMING</h1> 
-        <p>USMAN YAKIN TRIO SINADA | NIM: 251410006</p> 
+        <h1>🔴 CYBER VIRUS - OOP DART REPORT</h1> 
+        <p>USMAN YAKIN TRIO SINADA | NIM: 251410006 | KELAS: SI2A</p> 
     </header> 
     
     <!-- MODAL POPUP (SATU UNTUK SEMUA) -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-content">
             <div class="modal-header">
-                <span class="modal-title" id="modalTitle">Demo Class & Object</span>
+                <span class="modal-title" id="modalTitle">Demo Constructor & Enkapsulasi</span>
                 <div class="modal-close" onclick="closeModal()">×</div>
             </div>
             <iframe class="modal-iframe" id="modalIframe" src="about:blank" allow="fullscreen"></iframe>
@@ -284,213 +284,351 @@
     </div>
     
     <div class="container"> 
+        <!-- PENGERTIAN OOP -->
         <div class="comment-box"> 
-            <h2>1. PENGERTIAN OOP</h2> 
+            <h2>💀 1. PENGERTIAN OOP</h2> 
             <p>Object Oriented Programming (OOP) adalah paradigma pemrograman yang menggunakan objek sebagai dasar perancangan program. Pendekatan ini memungkinkan kode menjadi lebih terstruktur, modular, dan mudah dikembangkan.</p> 
         </div> 
 
-        <!-- CLASS DAN OBJECT -->
+        <!-- KELAS BUKU - Constructor Dasar -->
         <div class="card"> 
-            <h2>2. Class Dan Object <span class="status-same">✓ Sama dengan DartPad</span></h2> 
-            <p><b>Class</b> merupakan blueprint atau cetak biru yang digunakan untuk membuat objek. Class berisi atribut (variabel) yang menggambarkan karakteristik suatu objek serta method (fungsi) yang menggambarkan perilaku objek tersebut. Sedangkan <b>object</b> merupakan instansi dari sebuah class.</p> 
+            <h2>📚 2. KELAS BUKU - Constructor Dasar</h2> 
+            <p><b>Constructor</b> adalah method khusus yang dipanggil saat objek dibuat. Parameterized constructor menerima parameter untuk mengisi nilai awal atribut.</p> 
             <pre><code>// Nama   : USMAN YAKIN TRIO SINADA
 // Nim    : 251410006
-// Kelas  : Si2A
+// Kelas  : SI2A
 
-class Car {
-  String model; // Properti model
-  String color; // Properti warna
+class Buku {
+  String judul;
 
-  // Constructor untuk inisialisasi model dan color secara langsung
-  Car(this.model, this.color);
-
-  // Method untuk menyalakan mobil
-  void start() {
-    print('Engine Online: $model'); // Menampilkan pesan dengan nama model
-  }
+  // Parameterized Constructor
+  Buku(this.judul);
 }
 
 void main() {
-  // Membuat objek myCar dari class Car
-  Car myCar = Car("Sirion", "Biru");
-
-  // Menjalankan fungsi start
-  myCar.start();
-
-  // Menampilkan atribut warna
-  print(myCar.color);
+  // Membuat objek dari kelas Buku
+  Buku buku1 = Buku("Pemrograman Dart untuk Pemula");
+  
+  // Menampilkan judul buku
+  print("Judul Buku: ${buku1.judul}");
 }</code></pre>
             <div class="btn-group">
-                <button onclick="openModal('https://dartpad.dev/01e4151ce06fb25f27ca57d7c7c86a48?theme=dark', 'Demo Class & Object')" class="popup-btn">🚗 Buka Demo Class & Object di Popup</button>
+                <button onclick="openModal('https://dartpad.dev/20aadb8c8587ab3cc1d4bf32cefaee37?theme=dark', 'Demo Kelas Buku')" class="popup-btn">📚 Buka Demo Buku</button>
             </div>
             <div class="iframe-container">
-                <iframe src="https://dartpad.dev/01e4151ce06fb25f27ca57d7c7c86a48?theme=dark"></iframe>
+                <iframe src="https://dartpad.dev/20aadb8c8587ab3cc1d4bf32cefaee37?theme=dark"></iframe>
                 <div class="iframe-overlay">
-                    <span>🔒 KLIK TOMBOL DI ATAS UNTUK MEMBUKA</span>
+                    <span>🔒 KLIK TOMBOL DI ATAS</span>
                 </div>
             </div>
         </div> 
 
-        <!-- CONSTRUCTOR -->
+        <!-- KELAS MOBIL - Named Constructor -->
         <div class="card"> 
-            <h2>3. CONSTRUCTOR <span class="status-same">✓ Sama dengan DartPad</span></h2> 
-            <p><b>Constructor</b> adalah method khusus untuk inisialisasi nilai awal pada objek ketika objek dibuat.</p> 
+            <h2>🚗 3. KELAS MOBIL - Named Constructor</h2> 
+            <p><b>Named constructor</b> memberikan nama khusus pada constructor untuk berbagai skenario pembuatan objek.</p> 
             <pre><code>// Nama   : USMAN YAKIN TRIO SINADA
 // Nim    : 251410006
-// Kelas  : Si2A
-class Car {
-  String model; // Properti model
-  String color; // Properti warna
+// Kelas  : SI2A
 
-  // Constructor untuk inisialisasi model dan color secara langsung
-  Car(this.model, this.color);
+class Mobil {
+  String? merk;
+  int? tahun;
 
-  // Method untuk menyalakan mobil
-  void start() {
-    print('Engine Online: $model'); // Menampilkan pesan dengan nama model
+  // Parameterized Constructor
+  Mobil(this.merk, this.tahun);
+
+  // Named Constructor: Mobil Baru
+  Mobil.baru() {
+    merk = 'Nissan Skyline GT-R R34';
+    tahun = 2002;
   }
-}
 
-void main() {
-  // Membuat objek myCar dari class Car
-  Car myCar = Car("SUPRAMK4", "BLACK");
-
-  myCar.start();        // Menjalankan fungsi start
-  print(myCar.color);   // Menampilkan atribut warna
+  // Named Constructor: dari JSON
+  Mobil.dariJson(Map&lt;String, dynamic&gt; json) {
+    merk = json['merk'];
+    tahun = json['tahun'];
+  }
 }</code></pre>
             <div class="btn-group">
-                <button onclick="openModal('https://dartpad.dev/3f193fd7486b8dc7a2c4c54b9838cc46?theme=dark', 'Demo Constructor')" class="popup-btn">🔧 Buka Demo Constructor di Popup</button>
+                <button onclick="openModal('https://dartpad.dev/b46846b773d7a3224f23a99e2d6001e2?theme=dark', 'Demo Kelas Mobil')" class="popup-btn">🚗 Buka Demo Mobil</button>
             </div>
             <div class="iframe-container">
-                <iframe src="https://dartpad.dev/3f193fd7486b8dc7a2c4c54b9838cc46?theme=dark"></iframe>
+                <iframe src="https://dartpad.dev/b46846b773d7a3224f23a99e2d6001e2?theme=dark"></iframe>
                 <div class="iframe-overlay">
-                    <span>🔒 KLIK TOMBOL DI ATAS UNTUK MEMBUKA</span>
+                    <span>🔒 KLIK TOMBOL DI ATAS</span>
                 </div>
             </div>
         </div> 
 
-        <!-- VALIDASI DATA -->
+        <!-- KELAS WARNA - Constant Constructor -->
         <div class="card"> 
-            <h2>4. VALIDASI DATA <span class="status-same">✓ Sama dengan DartPad</span></h2> 
-            <p><b>Validasi data</b> dalam constructor memastikan data yang dimasukkan sesuai aturan.</p> 
+            <h2>🎨 4. KELAS WARNA - Constant Constructor</h2> 
+            <p><b>Constant constructor</b> membuat objek yang tidak bisa diubah (immutable) dan dioptimasi memory.</p> 
             <pre><code>// Nama   : USMAN YAKIN TRIO SINADA
 // Nim    : 251410006
-// Kelas  : Si2A
+// Kelas  : SI2A
+
+class Warna {
+  final int r, g, b;
+
+  // Constant Constructor
+  const Warna(this.r, this.g, this.b);
+
+  @override
+  String toString() {
+    return 'Warna(r: $r, g: $g, b: $b)';
+  }
+}
+
+void main() {
+  const warnaMerah = Warna(255, 0, 0);
+  const warnaHijau = Warna(0, 255, 0);
+  
+  print(warnaMerah);
+}</code></pre>
+            <div class="btn-group">
+                <button onclick="openModal('https://dartpad.dev/8a9568e1420a9631dfbba8d67d19a25b?theme=dark', 'Demo Kelas Warna')" class="popup-btn">🎨 Buka Demo Warna</button>
+            </div>
+            <div class="iframe-container">
+                <iframe src="https://dartpad.dev/8a9568e1420a9631dfbba8d67d19a25b?theme=dark"></iframe>
+                <div class="iframe-overlay">
+                    <span>🔒 KLIK TOMBOL DI ATAS</span>
+                </div>
+            </div>
+        </div> 
+
+        <!-- KELAS TITIK - Initializer List -->
+        <div class="card"> 
+            <h2>📐 5. KELAS TITIK - Initializer List</h2> 
+            <p><b>Initializer list</b> mengeksekusi kode sebelum constructor body untuk validasi atau manipulasi nilai awal.</p> 
+            <pre><code>// Nama   : USMAN YAKIN TRIO SINADA
+// Nim    : 251410006
+// Kelas  : SI2A
+
+class Titik {
+  final double x, y;
+
+  // Initializer list untuk memastikan koordinat bernilai absolut
+  Titik(double x, double y)
+      : x = x.abs(),
+        y = y.abs() {
+    print('Titik (${this.x}, ${this.y}) berhasil dibuat.');
+  }
+}
+
+void main() {
+  Titik titik1 = Titik(5.0, 7.0);
+  Titik titik2 = Titik(-3.5, -8.0);
+}</code></pre>
+            <div class="btn-group">
+                <button onclick="openModal('https://dartpad.dev/9f5d396d2410b032cca78e0b08521604?theme=dark', 'Demo Kelas Titik')" class="popup-btn">📐 Buka Demo Titik</button>
+            </div>
+            <div class="iframe-container">
+                <iframe src="https://dartpad.dev/9f5d396d2410b032cca78e0b08521604?theme=dark"></iframe>
+                <div class="iframe-overlay">
+                    <span>🔒 KLIK TOMBOL DI ATAS</span>
+                </div>
+            </div>
+        </div> 
+
+        <!-- KELAS MAHASISWA - Named Constructor -->
+        <div class="card"> 
+            <h2>👨‍🎓 6. KELAS MAHASISWA - Named Constructor</h2> 
+            <p><b>Named constructor</b> dengan berbagai sumber data: dari input langsung, dari Map, dan anonim.</p> 
+            <pre><code>// Nama   : USMAN YAKIN TRIO SINADA
+// Nim    : 251410006
+// Kelas  : SI2A
+
 class Mahasiswa {
-  String nama; // nama : USMAN YAKIN TRIO SINADA
-  String nim;  // nim  : 251410006
-  double ipk;  // ipk  : 3.90
+  String nama;
+  String nim;
+  String jurusan;
+  String kelas;
 
-  // Constructor Mahasiswa (Menginisialisasi data input)
-  Mahasiswa(this.nama, this.nim, this.ipk);
+  // Default Constructor
+  Mahasiswa(this.nama, this.nim, this.jurusan, this.kelas);
 
-  // Method untuk menampilkan data mahasiswa ke konsol
-  void tampilkanData() {
-    print('Nama : $nama');
-    print('NIM  : $nim');
-    print('IPK  : $ipk');
-  }
-}
+  // Named Constructor: dari Map
+  Mahasiswa.dariMap(Map&lt;String, String&gt; data)
+      : nama = data['nama']!,
+        nim = data['nim']!,
+        jurusan = data['jurusan']!,
+        kelas = data['kelas']!;
 
-void main() {
-  // Membuat objek mhs1 dari class Mahasiswa
-  Mahasiswa mhs1 = Mahasiswa("USMAN YAKIN TRIO SINADA", "251410006", 3.90);
-
-  mhs1.tampilkanData(); // Memanggil method tampilkanData
+  // Named Constructor: Tanpa Nama
+  Mahasiswa.tanpaNama(this.nim, this.jurusan, this.kelas) : nama = '*** ANONIM ***';
 }</code></pre>
             <div class="btn-group">
-                <button onclick="openModal('https://dartpad.dev/412250cf409edf27ef815bf5fc8561e8?theme=dark', 'Demo Validasi Data')" class="popup-btn">✅ Buka Demo Validasi di Popup</button>
+                <button onclick="openModal('https://dartpad.dev/f579ffe6fa84f15b06f209dad9d14019?theme=dark', 'Demo Kelas Mahasiswa')" class="popup-btn">👨‍🎓 Buka Demo Mahasiswa</button>
             </div>
             <div class="iframe-container">
-                <iframe src="https://dartpad.dev/412250cf409edf27ef815bf5fc8561e8?theme=dark"></iframe>
+                <iframe src="https://dartpad.dev/f579ffe6fa84f15b06f209dad9d14019?theme=dark"></iframe>
                 <div class="iframe-overlay">
-                    <span>🔒 KLIK TOMBOL DI ATAS UNTUK MEMBUKA</span>
+                    <span>🔒 KLIK TOMBOL DI ATAS</span>
                 </div>
             </div>
         </div> 
 
-        <!-- ENCAPSULATION -->
+        <!-- KELAS PERSON - Enkapsulasi -->
         <div class="card"> 
-            <h2>5. ENCAPSULATION <span class="status-same">✓ Sama dengan DartPad</span></h2> 
-            <p><b>Encapsulation</b> membungkus data dan method serta membatasi akses langsung dari luar class.</p> 
+            <h2>👤 7. KELAS PERSON - Enkapsulasi Dasar</h2> 
+            <p><b>Enkapsulasi</b> menyembunyikan data internal dan menyediakan akses melalui getter/setter dengan validasi.</p> 
             <pre><code>// Nama   : USMAN YAKIN TRIO SINADA
 // Nim    : 251410006
-// Kelas  : Si2A
+// Kelas  : SI2A
+
 class Person {
-  String _name; // Atribut private (diawali underscore)
-  int age;      // Atribut publik
+  String _nama; // Private field
+  int _umur;    // Private field
 
-  // Constructor
-  Person(this._name, this.age);
+  Person(this._nama, this._umur);
 
-  // Setter untuk mengubah nilai _name secara aman
-  void setName(String name) => _name = name;
+  // Getter
+  String get nama => _nama;
+  int get umur => _umur;
 
-  // Getter untuk mengambil nilai _name
-  String getName() => _name;
-}
+  // Setter dengan validasi
+  set nama(String namaBaru) {
+    if (namaBaru.isNotEmpty) _nama = namaBaru;
+  }
 
-void main() {
-  // Membuat objek dari class Person
-  Person person = Person("USMAN YAKIN TRIO SINADA", 18);
-
-  print(person.age);        // Menampilkan umur
-  person.setName("USMAN");  // Mengubah nama
-  print(person.getName());  // Menampilkan nama hasil getter
+  set umur(int umurBaru) {
+    if (umurBaru > 0 && umurBaru < 150) _umur = umurBaru;
+  }
 }</code></pre>
             <div class="btn-group">
-                <button onclick="openModal('https://dartpad.dev/7485567e04225ae90334f2de05704956?theme=dark', 'Demo Encapsulation')" class="popup-btn">🔒 Buka Demo Encapsulation di Popup</button>
+                <button onclick="openModal('https://dartpad.dev/a91ea440b0cf5e1c48db3318679f4708?theme=dark', 'Demo Kelas Person')" class="popup-btn">👤 Buka Demo Person</button>
             </div>
             <div class="iframe-container">
-                <iframe src="https://dartpad.dev/7485567e04225ae90334f2de05704956?theme=dark"></iframe>
+                <iframe src="https://dartpad.dev/a91ea440b0cf5e1c48db3318679f4708?theme=dark"></iframe>
                 <div class="iframe-overlay">
-                    <span>🔒 KLIK TOMBOL DI ATAS UNTUK MEMBUKA</span>
+                    <span>🔒 KLIK TOMBOL DI ATAS</span>
                 </div>
             </div>
         </div> 
 
-        <!-- NAMED PARAMETER -->
+        <!-- KELAS PRODUK - Validasi Setter -->
         <div class="card"> 
-            <h2>6. NAMED PARAMETER <span class="status-same">✓ Sama dengan DartPad</span></h2> 
-            <p><b>Named parameter</b> memungkinkan parameter dipanggil berdasarkan nama, membuat kode lebih jelas.</p> 
+            <h2>📦 8. KELAS PRODUK - Validasi Setter</h2> 
+            <p><b>Validasi pada setter</b> memastikan data yang masuk sesuai aturan (nama minimal 3 karakter, harga > 0).</p> 
             <pre><code>// Nama   : USMAN YAKIN TRIO SINADA
 // Nim    : 251410006
-// Kelas  : Si2A
-class Product {
-  String nama; // Nama produk (contoh: Laptop)
+// Kelas  : SI2A
 
-  // Constructor
-  Product(this.nama);
-}
+class Produk {
+  String _nama;
+  double _harga;
 
-void main() {
-  // Membuat objek produk1 dari class Product
-  Product produk1 = Product("Usman Website");
+  Produk(this._nama, this._harga);
 
-  // Menampilkan atribut nama
-  print(produk1.nama);
+  set nama(String value) {
+    if (value.length >= 3) _nama = value;
+  }
+
+  set harga(double value) {
+    if (value > 0) _harga = value;
+  }
 }</code></pre>
             <div class="btn-group">
-                <button onclick="openModal('https://dartpad.dev/040a443efe898a4f595f6c4cc9dda6d2?theme=dark', 'Demo Named Parameter')" class="popup-btn">📦 Buka Demo Named Parameter di Popup</button>
+                <button onclick="openModal('https://dartpad.dev/ae4bd7f7264ff7273e44d217ae36cdb9?theme=dark', 'Demo Kelas Produk')" class="popup-btn">📦 Buka Demo Produk</button>
             </div>
             <div class="iframe-container">
-                <iframe src="https://dartpad.dev/040a443efe898a4f595f6c4cc9dda6d2?theme=dark"></iframe>
+                <iframe src="https://dartpad.dev/ae4bd7f7264ff7273e44d217ae36cdb9?theme=dark"></iframe>
                 <div class="iframe-overlay">
-                    <span>🔒 KLIK TOMBOL DI ATAS UNTUK MEMBUKA</span>
+                    <span>🔒 KLIK TOMBOL DI ATAS</span>
+                </div>
+            </div>
+        </div> 
+
+        <!-- KELAS USER - Sistem Login -->
+        <div class="card"> 
+            <h2>🔐 9. KELAS USER - Sistem Login</h2> 
+            <p><b>Enkapsulasi</b> dengan metode login dan ganti password yang memiliki validasi.</p> 
+            <pre><code>// Nama   : USMAN YAKIN TRIO SINADA
+// Nim    : 251410006
+// Kelas  : SI2A
+
+class User {
+  String _username;
+  String _password;
+  String _email;
+
+  User(this._username, this._password, this._email);
+
+  bool login(String username, String password) {
+    return username == _username && password == _password;
+  }
+
+  void gantiPassword(String lama, String baru) {
+    if (lama == _password && baru.length >= 6) {
+      _password = baru;
+    }
+  }
+}</code></pre>
+            <div class="btn-group">
+                <button onclick="openModal('https://dartpad.dev/d02e401f64b5473f1f32537967aadc3f?theme=dark', 'Demo Kelas User')" class="popup-btn">🔐 Buka Demo User</button>
+            </div>
+            <div class="iframe-container">
+                <iframe src="https://dartpad.dev/d02e401f64b5473f1f32537967aadc3f?theme=dark"></iframe>
+                <div class="iframe-overlay">
+                    <span>🔒 KLIK TOMBOL DI ATAS</span>
+                </div>
+            </div>
+        </div> 
+
+        <!-- KELAS REKENING BANK - Simulasi Transaksi -->
+        <div class="card"> 
+            <h2>🏦 10. KELAS REKENING BANK - Simulasi Transaksi</h2> 
+            <p><b>Enkapsulasi</b> dengan metode deposit, tarik tunai, dan transfer dengan validasi saldo.</p> 
+            <pre><code>// Nama   : USMAN YAKIN TRIO SINADA
+// Nim    : 251410006
+// Kelas  : SI2A
+
+class RekeningBank {
+  String _nomorRekening;
+  double _saldo;
+
+  RekeningBank(this._nomorRekening, this._saldo);
+
+  void deposit(double jumlah) {
+    if (jumlah > 0) _saldo += jumlah;
+  }
+
+  void tarik(double jumlah) {
+    if (jumlah > 0 && _saldo >= jumlah) _saldo -= jumlah;
+  }
+
+  void transfer(RekeningBank tujuan, double jumlah) {
+    if (jumlah > 0 && _saldo >= jumlah) {
+      _saldo -= jumlah;
+      tujuan._saldo += jumlah;
+    }
+  }
+}</code></pre>
+            <div class="btn-group">
+                <button onclick="openModal('https://dartpad.dev/a7e6c9368035d0f6d75d98b794824fc5?theme=dark', 'Demo Kelas RekeningBank')" class="popup-btn">🏦 Buka Demo Rekening</button>
+            </div>
+            <div class="iframe-container">
+                <iframe src="https://dartpad.dev/a7e6c9368035d0f6d75d98b794824fc5?theme=dark"></iframe>
+                <div class="iframe-overlay">
+                    <span>🔒 KLIK TOMBOL DI ATAS</span>
                 </div>
             </div>
         </div> 
 
         <!-- KESIMPULAN -->
         <div class="card"> 
-            <h2>7. KESIMPULAN</h2> 
-            <p>Konsep OOP seperti class, object, constructor, validasi data, encapsulation, dan named parameter membuat program lebih terstruktur, mudah dipelihara, dan dapat dikembangkan menjadi sistem yang lebih kompleks.</p>
-            <p style="color: #00ff9f; margin-top: 20px;">✅ Semua source code di website ini sudah <b>SESUAI</b> dengan kode yang ada di DartPad.</p>
+            <h2>🎯 11. KESIMPULAN</h2> 
+            <p>✅ <b>Constructor</b> memungkinkan pembuatan objek dengan nilai awal spesifik (parameterized, named, constant).</p>
+            <p>✅ <b>Enkapsulasi</b> dengan getter & setter menjaga keamanan data, mencegah akses langsung ke atribut private.</p>
+            <p>✅ <b>Validasi</b> pada setter memastikan data selalu dalam keadaan valid dan konsisten.</p>
+            <p style="color: #00ff9f; margin-top: 20px;">🔴 Semua source code di website ini SESUAI dengan kode yang ada di GIST.</p>
         </div> 
     </div> 
 
     <footer> 
-        © 2026 - UNIVERSITAS BINADARMA 
+        © 2026 - USMAN YAKIN TRIO SINADA | UNIVERSITAS BINADARMA 
     </footer> 
 
     <script>
